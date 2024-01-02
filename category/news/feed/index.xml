@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>News (Demo) Archives - लोधा समाज इंदौर</title>
+	<atom:link href="https://indore.lodhasamaj.org/category/news/feed/" rel="self" type="application/rss+xml" />
+	<link>https://indore.lodhasamaj.org/category/news/</link>
+	<description></description>
+	<lastBuildDate>Sun, 05 Aug 2018 13:55:31 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.4.2</generator>
+
+<image>
+	<url>https://indore.lodhasamaj.org/wp-content/uploads/2023/10/Lodha-Samaj-Logo-1-e1697814994712.png</url>
+	<title>News (Demo) Archives - लोधा समाज इंदौर</title>
+	<link>https://indore.lodhasamaj.org/category/news/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Simple Lorem Blog Post (Demo)</title>
+		<link>https://indore.lodhasamaj.org/simple-lorem-blog-post-2/</link>
+					<comments>https://indore.lodhasamaj.org/simple-lorem-blog-post-2/#respond</comments>
+		
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+		<pubDate>Sun, 05 Aug 2018 13:55:31 +0000</pubDate>
+				<category><![CDATA[News (Demo)]]></category>
+		<guid isPermaLink="false">http://democontent.codex-themes.com/sites/onepagers/charity-one-pager/?p=258</guid>
+
+					<description><![CDATA[<p>Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio </p>
+<p>The post <a href="https://indore.lodhasamaj.org/simple-lorem-blog-post-2/">Simple Lorem Blog Post (Demo)</a> appeared first on <a href="https://indore.lodhasamaj.org/">लोधा समाज इंदौर</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lobortis nulla nec urna cursus faucibus. Mauris ut enim iaculis, cursus mauris convallis, gravida ligula. Nulla dignissim, lectus nec facilisis tincidunt, nibh metus convallis lacus, vitae malesuada dolor risus vitae orci. Duis accumsan ipsum et nibh mollis, aliquam rutrum sem egestas. Donec sagittis eros diam, at varius mauris varius vitae. Nulla lectus ligula, tristique sed magna in, laoreet lacinia augue. Aliquam auctor vehicula dui, ut vehicula nibh iaculis ac. Aenean lobortis sem nec ipsum eleifend commodo. Fusce et congue turpis, volutpat pharetra purus. Donec nec vehicula urna, ac volutpat arcu. Cras hendrerit dolor at ex pharetra, in gravida odio molestie. Quisque bibendum, odio ac imperdiet auctor, urna elit sodales eros, id interdum ligula magna et justo.</p>
+<p>Aenean et sapien eget tortor vestibulum finibus tristique id velit. Proin interdum, augue eu faucibus sagittis, purus leo fermentum tortor, sit amet blandit sapien mi in erat. Vestibulum eros ipsum, scelerisque at elementum at, feugiat ac elit. Nunc faucibus in leo at tristique. Ut molestie commodo semper. Nullam tempus lorem ligula, id suscipit libero molestie eu. Nullam ac quam ullamcorper, efficitur ex a, porttitor risus. Mauris feugiat elit quam, id commodo eros tristique a. Cras sed risus ipsum. Pellentesque a consectetur erat. Nam malesuada odio dignissim velit suscipit, et pulvinar lorem interdum. Vivamus semper eleifend bibendum. Maecenas ipsum est, congue vitae turpis in, feugiat hendrerit tellus. Nulla accumsan nec felis vitae lobortis. Proin faucibus eu lacus sodales lobortis. Cras rhoncus quis ligula eget hendrerit.</p>
+<p>Nullam hendrerit odio malesuada nunc pretium, id feugiat nulla tempus. In hac habitasse platea dictumst. Praesent sed nisl maximus, dapibus diam nec, convallis orci. Morbi eleifend, lacus nec varius imperdiet, mi diam mattis turpis, ac lobortis eros mauris ut nunc. Sed lobortis, dolor a rhoncus pharetra, massa massa iaculis purus, quis eleifend metus urna egestas enim. Nullam sagittis ut est quis semper. In metus lectus, dignissim quis semper quis, cursus non odio. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus sodales nulla quis metus faucibus fermentum. Sed nec urna viverra libero pretium feugiat. Phasellus molestie ut est eu dictum. Nam scelerisque lobortis urna sed vestibulum. Nunc maximus posuere nisi, non fringilla mauris lacinia sed. Nullam egestas est vitae magna interdum malesuada.</p>
+<p>The post <a href="https://indore.lodhasamaj.org/simple-lorem-blog-post-2/">Simple Lorem Blog Post (Demo)</a> appeared first on <a href="https://indore.lodhasamaj.org/">लोधा समाज इंदौर</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://indore.lodhasamaj.org/simple-lorem-blog-post-2/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

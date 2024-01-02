@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Blog Archives - लोधा समाज इंदौर</title>
+	<atom:link href="https://indore.lodhasamaj.org/category/blog/feed/" rel="self" type="application/rss+xml" />
+	<link>https://indore.lodhasamaj.org/category/blog/</link>
+	<description></description>
+	<lastBuildDate>Fri, 13 Oct 2023 09:04:32 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.4.2</generator>
+
+<image>
+	<url>https://indore.lodhasamaj.org/wp-content/uploads/2023/10/Lodha-Samaj-Logo-1-e1697814994712.png</url>
+	<title>Blog Archives - लोधा समाज इंदौर</title>
+	<link>https://indore.lodhasamaj.org/category/blog/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Hello world!</title>
+		<link>https://indore.lodhasamaj.org/hello-world/</link>
+					<comments>https://indore.lodhasamaj.org/hello-world/#comments</comments>
+		
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+		<pubDate>Thu, 12 Oct 2023 19:09:54 +0000</pubDate>
+				<category><![CDATA[Blog]]></category>
+		<guid isPermaLink="false">https://indore.lodhasamaj.org/?p=1</guid>
+
+					<description><![CDATA[<p>लोधा समाज इंदौर का उद्देश्य समाज के जन-जन तक सेवा सहायता एवं मार्गदर्शन पहुचाना है &#124; लोधा समाज इंदौर सदेव...</p>
+<p>The post <a href="https://indore.lodhasamaj.org/hello-world/">Hello world!</a> appeared first on <a href="https://indore.lodhasamaj.org/">लोधा समाज इंदौर</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>लोधा समाज इंदौर का उद्देश्य समाज के जन-जन तक सेवा सहायता एवं मार्गदर्शन पहुचाना है | लोधा समाज इंदौर सदेव अपने समाज के सदस्यों की प्रगति हेतु नवीनतम टेक्नोलॉजी अपनाने का पक्षधर रही है | लोधा समाज इंदौर वेब-पोर्टल के द्वारा समाजजनों को जोड़ना जिससे समाज संगठित हो सके और आपस में संपर्क स्थापित कर सके ,और इस वेब-पोर्टल के द्वारा इस तरह की सेवाए दी जा रही है, जिसमे लोधा समाज के सदस्यों के पारिवारिक परिवेश को ध्यान में रखते हुए समाज द्वारा संचालित वेब-पोर्टल के माध्यम से बच्चों की पढाई-लिखाई, उनके केरियर एवं व्यावसायिक ट्रेनिंग, आदि कोर्स करने की प्रेरणा एवम सहायता देना साथ ही मेडिकल सुविधाए एवं ब्लड-बैंक के माध्यम से आवश्यकता पड़ने पर उन्हें सहायता उपलब्ध कराना, ऐसे सेवा कार्य किये जायेंगे | साथ ही ऐसे सक्षम समर्थ लोधी बंधू जो इस तरह के सेवा कार्यो में लोधा समाज के माध्यम से सेवा देना चाहते है वे सहर्ष आमंत्रित है</p>
+<p>The post <a href="https://indore.lodhasamaj.org/hello-world/">Hello world!</a> appeared first on <a href="https://indore.lodhasamaj.org/">लोधा समाज इंदौर</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://indore.lodhasamaj.org/hello-world/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>
