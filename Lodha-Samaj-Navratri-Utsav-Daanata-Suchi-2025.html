@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <title>लोधा समाज नवरात्र उत्सव दानदाता (2025)</title>
+  <link rel="icon" type="image/png" href="https://indore.lodhasamaj.org/wp-content/uploads/2023/10/Lodha-Samaj-Logo-1-300x260.png">
+</head>
+<body>
+  <header class="header-container">
+    <img src="https://indore.lodhasamaj.org/wp-content/uploads/2023/10/Lodha-Samaj-Logo-1-300x260.png" alt="Lodha Samaj Logo" class="logo left-logo">
+    <h1>लोधा समाज उत्सव समिति</h1>
+    <img src="https://png.pngtree.com/png-vector/20250904/ourmid/pngtree-beautiful-maa-durga-face-transparent-background-png-image_17365184.webp" alt="New Logo" class="logo right-logo">
+    <style>
+      body {
+        font-family: "Noto Sans Devanagari", sans-serif;
+        margin: 20px;
+        background: #fff5f5;
+        color: #333;
+      }
+
+      /* Header with logos */
+      .header-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+        padding: 10px 20px;
+      }
+
+      .header-container h1 {
+        flex: 1;
+        text-align: center;
+        font-size: 48px;
+        color: #c0392b; /* Dark Red */
+        margin: 0 20px;
+      }
+
+      .logo {
+        max-height: 180px; /* adjust logo height */
+        width: auto;
+      }
+
+      /* Filters */
+      .filters {
+        margin-bottom: 20px;
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      input, select {
+        padding: 8px 12px;
+        font-size: 14px;
+        border: 1px solid #e74c3c;
+        border-radius: 6px;
+        outline: none;
+        transition: 0.3s;
+      }
+
+      input:focus, select:focus {
+        border-color: #e74c3c;
+        box-shadow: 0 0 5px rgba(231, 76, 60, 0.3);
+      }
+
+      /* Second header <h2> styling */
+      h1 {
+        text-align: center;
+        font-size: 40px; /* smaller than h1 */
+        color: #e74c3c; /* same red theme */
+        margin-bottom: 25px;
+        font-weight: 500;
+      }
+      h2 {
+        text-align: center;
+        font-size: 20px; /* smaller than h1 */
+        color: #e74c3c; /* same red theme */
+        margin-bottom: 25px;
+        font-weight: 500;
+      }
+
+
+      /* Table styling */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #fff;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      th, td {
+        border-bottom: 1px solid #f2d7d5;
+        padding: 12px 13px;
+        text-align: left;
+        transition: background 0.3s;
+      }
+
+      th {
+        background: #e74c3c; /* Red Header */
+        color: #fff;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      tr:nth-child(even) {
+        background: #fdecea;
+      }
+
+      tr:hover {
+        background: #f9c0b7;
+      }
+
+      .no-results {
+        text-align: center;
+        padding: 20px;
+        font-style: italic;
+        color: #c0392b;
+      }
+
+      /* Responsive: table & header */
+      @media (max-width: 768px) {
+        .header-container {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .header-container h1 {
+          margin: 10px 0;
+          font-size: 22px;
+        }
+
+        .logo {
+          max-height: 60px;
+          margin: 5px 0;
+        }
+
+        table, thead, tbody, th, td, tr {
+          display: block;
+        }
+
+        thead tr {
+          display: none;
+        }
+
+        tr {
+          margin-bottom: 15px;
+          border: 1px solid #f2d7d5;
+          border-radius: 8px;
+          padding: 10px;
+          background: #fff;
+        }
+
+        td {
+          padding: 6px 8px;
+          text-align: right;
+          position: relative;
+        }
+
+        td::before {
+          content: attr(data-label);
+          position: absolute;
+          left: 10px;
+          width: 50%;
+          font-weight: 600;
+          text-align: left;
+          color: #c0392b;
+        }
+      }
+    </style>
+  </header>
+
+  <h1>लोधा समाज नवरात्र उत्सव दानदाता सूची (2025)</h1>
+  <div class="filters">
+    <input type="text" id="searchName" placeholder="दानदाता खोजें...">
+    <select id="filterType">
+      <option value="">दान प्रकार चुनें</option>
+      <option value="शक्कर">शक्कर</option>
+      <option value="आटा">आटा</option>
+      <option value="तेल">तेल</option>
+      <option value="नमक">नमक</option>
+      <option value="मावा">मावा</option>
+      <option value="बेसन">बेसन</option>
+      <option value="नगद">नगद</option>
+      <option value="घी">घी</option>
+      <option value="गैस">गैस</option>
+      <option value="अन्य">अन्य</option>
+    </select>
+  </div>
+
+<table id="donationTable">
+  <thead>
+    <tr>
+      <th>क्रम संख्या</th>
+      <th>दानदाता का नाम</th>
+      <th>दान राशि/मात्रा</th>
+      <th>दान प्रकार</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td>स्व. श्री किशोरी जी मंजे एवं श्रीमती दीपा बाई जी मंजे के परिवार</td><td>125 किलो</td><td>शक्कर</td></tr>
+    <tr><td>2</td><td>श्री अमित जी राजपूत एवं श्री सुनील जी वर्मा (महाराष्ट्र वाले)</td><td>11 डब्बा</td><td>तेल</td></tr>
+    <tr><td>3</td><td>श्री रिंकू जी (DJ वाले)</td><td>2 डब्बा</td><td>तेल</td></tr>
+    <tr><td>4</td><td>श्री गोपाल जी पटेल (महू)</td><td>₹5100</td><td>नगद</td></tr>
+    <tr><td>5</td><td>स्व. श्रीमती कुंदन बाई के पुत्र श्री गोलू जी लोवंशी (दिल्ली) की ओर से</td><td>₹5100</td><td>नगद</td></tr>
+    <tr><td>6</td><td>श्री राकेश जी चौधरी (बाल्दा वाले)</td><td>101 किलो आटा + ₹1100</td><td>आटा, नगद</td></tr>
+    <tr><td>7</td><td>श्री मुन्ना जी मंजे (महू)</td><td>1 डब्बा</td><td>तेल</td></tr>
+    <tr><td>8</td><td>श्री आनंद जी जाट</td><td>51 किलो</td><td>आटा</td></tr>
+    <tr><td>9</td><td>गुप्त दानदाता</td><td>1 डब्बा</td><td>तेल</td></tr>
+    <tr><td>10</td><td>श्री राकेश जी चौधरी (बाल्दा वाले)</td><td>2 डब्बा</td><td>तेल</td></tr>
+    <tr><td>11</td><td>श्री विराट, सम्राट एवं चिराग जी मंजे</td><td>51 किलो</td><td>शक्कर</td></tr>
+    <tr><td>12</td><td>डॉ. सेठिया</td><td>₹500</td><td>नगद</td></tr>
+    <tr><td>13</td><td>श्री नंदू जी वर्मा (साईदा वाले)</td><td>101 किलो</td><td>आटा</td></tr>
+    <tr><td>14</td><td>श्री अजय जी जाट</td><td>51 किलो</td><td>आटा</td></tr>
+    <tr><td>15</td><td>श्री शिवांश जी जाट</td><td>51 किलो</td><td>आटा</td></tr>
+    <tr><td>16</td><td>श्री केवल जी वर्मा</td><td>251 किलो</td><td>शक्कर</td></tr>
+    <tr><td>17</td><td>श्री मन्नूलाल जी वर्मा एवं सचिन जी वर्मा</td><td>71 किलो</td><td>मावा</td></tr>
+    <tr><td>18</td><td>स्व. श्री करन जाट की सुपुत्री कायऱा जी जाट की ओर से</td><td>101 पानी जार</td><td>पानी</td></tr>
+    <tr><td>19</td><td>श्री संजय जी जमदार (बाबा)</td><td>501 किलो</td><td>शक्कर</td></tr>
+    <tr><td>20</td><td>श्री प्रताप कोतुल (कोषाध्यक्ष: लोधा समाज, इंदौर)</td><td>101 किलो</td><td>शक्कर</td></tr>
+  </tbody>
+</table>
+
+<div id="noResults" class="no-results" style="display:none;">
+  कोई परिणाम नहीं मिला
+</div>
+
+<script>
+  const searchInput = document.getElementById("searchName");
+  const filterType = document.getElementById("filterType");
+  const table = document.getElementById("donationTable");
+  const noResults = document.getElementById("noResults");
+
+  function filterTable() {
+    const searchValue = searchInput.value.toLowerCase();
+    const typeValue = filterType.value;
+    let visibleCount = 0;
+
+    Array.from(table.tBodies[0].rows).forEach(row => {
+      const name = row.cells[1].textContent.toLowerCase();
+      const type = row.cells[3].textContent;
+
+      const matchName = name.includes(searchValue);
+      const matchType = typeValue === "" || type.includes(typeValue);
+
+      if (matchName && matchType) {
+        row.style.display = "";
+        visibleCount++;
+      } else {
+        row.style.display = "none";
+      }
+    });
+
+    noResults.style.display = visibleCount === 0 ? "block" : "none";
+  }
+
+  searchInput.addEventListener("keyup", filterTable);
+  filterType.addEventListener("change", filterTable);
+
+  // -------- Sorting Functionality --------
+  const headers = table.querySelectorAll("th");
+  let sortDirection = Array(headers.length).fill(true); // true = ascending
+
+  headers.forEach((header, index) => {
+    header.style.cursor = "pointer";
+    header.addEventListener("click", () => {
+      const tbody = table.tBodies[0];
+      const rows = Array.from(tbody.rows);
+      const isNumberColumn = index === 0; // क्रम संख्या
+      const isAmountColumn = index === 2; // दान राशि/मात्रा (optional numeric sort)
+
+      rows.sort((a, b) => {
+        let aText = a.cells[index].textContent.trim();
+        let bText = b.cells[index].textContent.trim();
+
+        // Convert numeric columns
+        if (isNumberColumn) {
+          aText = parseInt(aText) || 0;
+          bText = parseInt(bText) || 0;
+        } else if (isAmountColumn) {
+          // Extract numbers from strings like "125 किलो" or "₹3100"
+          aText = parseInt(aText.replace(/[^\d]/g, "")) || 0;
+          bText = parseInt(bText.replace(/[^\d]/g, "")) || 0;
+        }
+
+        if (aText > bText) return sortDirection[index] ? 1 : -1;
+        if (aText < bText) return sortDirection[index] ? -1 : 1;
+        return 0;
+      });
+
+      // Re-add rows in sorted order
+      rows.forEach(row => tbody.appendChild(row));
+
+      // Toggle sort direction for next click
+      sortDirection[index] = !sortDirection[index];
+    });
+  });
+</script>
+
+</body>
+</html>
