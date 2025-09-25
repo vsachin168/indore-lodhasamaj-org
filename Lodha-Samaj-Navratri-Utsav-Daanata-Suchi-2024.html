@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <title>लोधा समाज नवरात्र उत्सव दानदाता (2024)</title>
+  <link rel="icon" type="image/png" href="https://indore.lodhasamaj.org/wp-content/uploads/2023/10/Lodha-Samaj-Logo-1-300x260.png">
+</head>
+<body>
+  <header class="header-container">
+    <img src="https://indore.lodhasamaj.org/wp-content/uploads/2023/10/Lodha-Samaj-Logo-1-300x260.png" alt="Lodha Samaj Logo" class="logo left-logo">
+    <h1>लोधा समाज उत्सव समिति</h1>
+    <img src="https://png.pngtree.com/png-vector/20250904/ourmid/pngtree-beautiful-maa-durga-face-transparent-background-png-image_17365184.webp" alt="New Logo" class="logo right-logo">
+    <style>
+      body {
+        font-family: "Noto Sans Devanagari", sans-serif;
+        margin: 20px;
+        background: #fff5f5;
+        color: #333;
+      }
+
+      /* Header with logos */
+      .header-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+        padding: 10px 20px;
+      }
+
+      .header-container h1 {
+        flex: 1;
+        text-align: center;
+        font-size: 48px;
+        color: #c0392b; /* Dark Red */
+        margin: 0 20px;
+      }
+
+      .logo {
+        max-height: 180px; /* adjust logo height */
+        width: auto;
+      }
+
+      /* Filters */
+      .filters {
+        margin-bottom: 20px;
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      input, select {
+        padding: 8px 12px;
+        font-size: 14px;
+        border: 1px solid #e74c3c;
+        border-radius: 6px;
+        outline: none;
+        transition: 0.3s;
+      }
+
+      input:focus, select:focus {
+        border-color: #e74c3c;
+        box-shadow: 0 0 5px rgba(231, 76, 60, 0.3);
+      }
+
+      /* Second header <h2> styling */
+      h1 {
+        text-align: center;
+        font-size: 40px; /* smaller than h1 */
+        color: #e74c3c; /* same red theme */
+        margin-bottom: 25px;
+        font-weight: 500;
+      }
+      h2 {
+        text-align: center;
+        font-size: 20px; /* smaller than h1 */
+        color: #e74c3c; /* same red theme */
+        margin-bottom: 25px;
+        font-weight: 500;
+      }
+
+
+      /* Table styling */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #fff;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      th, td {
+        border-bottom: 1px solid #f2d7d5;
+        padding: 12px 13px;
+        text-align: left;
+        transition: background 0.3s;
+      }
+
+      th {
+        background: #e74c3c; /* Red Header */
+        color: #fff;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      tr:nth-child(even) {
+        background: #fdecea;
+      }
+
+      tr:hover {
+        background: #f9c0b7;
+      }
+
+      .no-results {
+        text-align: center;
+        padding: 20px;
+        font-style: italic;
+        color: #c0392b;
+      }
+
+      /* Responsive: table & header */
+      @media (max-width: 768px) {
+        .header-container {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .header-container h1 {
+          margin: 10px 0;
+          font-size: 22px;
+        }
+
+        .logo {
+          max-height: 60px;
+          margin: 5px 0;
+        }
+
+        table, thead, tbody, th, td, tr {
+          display: block;
+        }
+
+        thead tr {
+          display: none;
+        }
+
+        tr {
+          margin-bottom: 15px;
+          border: 1px solid #f2d7d5;
+          border-radius: 8px;
+          padding: 10px;
+          background: #fff;
+        }
+
+        td {
+          padding: 6px 8px;
+          text-align: right;
+          position: relative;
+        }
+
+        td::before {
+          content: attr(data-label);
+          position: absolute;
+          left: 10px;
+          width: 50%;
+          font-weight: 600;
+          text-align: left;
+          color: #c0392b;
+        }
+      }
+    </style>
+  </header>
+
+  <h1>लोधा समाज नवरात्र उत्सव दानदाता सूची (2024)</h1>
+  <div class="filters">
+    <input type="text" id="searchName" placeholder="दानदाता खोजें...">
+    <select id="filterType">
+      <option value="">दान प्रकार चुनें</option>
+      <option value="शक्कर">शक्कर</option>
+      <option value="आटा">आटा</option>
+      <option value="तेल">तेल</option>
+      <option value="नमक">नमक</option>
+      <option value="मावा">मावा</option>
+      <option value="बेसन">बेसन</option>
+      <option value="नगद">नगद</option>
+      <option value="घी">घी</option>
+      <option value="गैस">गैस</option>
+      <option value="अन्य">अन्य</option>
+    </select>
+  </div>
+
+<table id="donationTable">
+  <thead>
+    <tr>
+      <th>क्रम संख्या</th>
+      <th>दानदाता का नाम</th>
+      <th>दान राशि/मात्रा</th>
+      <th>दान प्रकार</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td>स्व- किशोरी जी मंझे परिवार</td><td>125 किलो</td><td>शक्कर</td></tr>
+    <tr><td>2</td><td>अमित जी राजपूत परिवार</td><td>10 डब्बा</td><td>तेल</td></tr>
+    <tr><td>3</td><td>सुनील जी वर्मा (महाराष्ट्र)</td><td>5 डब्बा</td><td>तेल</td></tr>
+    <tr><td>4</td><td>मुकेश जी कौतुल</td><td>1 डब्बा</td><td>तेल</td></tr>
+    <tr><td>5</td><td>रिंकू जी (DJ वाले)</td><td>1 डब्बा</td><td>तेल</td></tr>
+    <tr><td>6</td><td>राजू जी चौधरी (बालदा कॉलोनी)</td><td>51 किलो</td><td>आटा</td></tr>
+    <tr><td>7</td><td>बालु जी मंझे परिवार</td><td>31 किलो</td><td>शक्कर</td></tr>
+    <tr><td>8</td><td>कल्लू राम जी (फरीदाबाद)</td><td>₹1000</td><td>नगद</td></tr>
+    <tr><td>9</td><td>विक्रम जी जाट (उपाध्यक्ष)</td><td>77 किलो</td><td>मावा</td></tr>
+    <tr><td>10</td><td>संजय जी जमदार (बाबा)</td><td>500 किलो, 31 किलो</td><td>शक्कर, नमक</td></tr>
+    <tr><td>11</td><td>श्री श्याम सेवा समिति (निलेश जी जाट)</td><td>1 डब्बा</td><td>तेल</td></tr>
+    <tr><td>12</td><td>राजा दौलत की जामदार</td><td>100 किलो</td><td>आटा</td></tr>
+    <tr><td>13</td><td>केवल जी वर्मा</td><td>151 किलो</td><td>शक्कर</td></tr>
+    <tr><td>14</td><td>रोहन जी बंकट परिवार</td><td>1 डब्बा</td><td>तेल</td></tr>
+    <tr><td>15</td><td>बबला जमदार-शेखर मजे</td><td>100 किलो</td><td>आटा</td></tr>
+    <tr><td>16</td><td>मुरली नारायण जी जमदार</td><td>51 किलो</td><td>बेसन</td></tr>
+    <tr><td>17</td><td>स्व- देवीलाल जी भवानी परिवार</td><td>51 किलो</td><td>शक्कर</td></tr>
+    <tr><td>18</td><td>नरेंद्र नानूराम जी वर्मा (महाराष्ट्र)</td><td>100 किलो</td><td>आटा</td></tr>
+    <tr><td>19</td><td>अरविन्द भगवती प्रसाद जी वर्मा</td><td>100 किलो</td><td>आटा</td></tr>
+    <tr><td>20</td><td>दिलीप गेंदालाल साहेबा</td><td>100 किलो</td><td>आटा</td></tr>
+    <tr><td>21</td><td>धन्नालाल जी जाट</td><td>51 किलो</td><td>मावा</td></tr>
+    <tr><td>22</td><td>कन्हैया कोतुल जी</td><td>200 किलो</td><td>शक्कर</td></tr>
+    <tr><td>23</td><td>दीपक जमदार जी</td><td>51 किलो</td><td>शक्कर</td></tr>
+    <tr><td>24</td><td>ऋतिक जाट</td><td>101 किलो, 11 किलो</td><td>आटा, नमक</td></tr>
+    <tr><td>25</td><td>भजन चमन चौधरी</td><td>51 किलो</td><td>शक्कर</td></tr>
+    <tr><td>26</td><td>मनोहर चौधरी</td><td>151 किलो</td><td>शक्कर</td></tr>
+    <tr><td>27</td><td>प्रताप मंजे/अर्जुन मंजे</td><td>101 किलो</td><td>आटा</td></tr>
+    <tr><td>28</td><td>राजा धन्नालाल चौधरी</td><td>51 किलो</td><td>आटा</td></tr>
+    <tr><td>29</td><td>महेश मंजे</td><td>151 किलो</td><td>आटा</td></tr>
+    <tr><td>30</td><td>गोविन्द जाट</td><td>51 किलो</td><td>आटा</td></tr>
+    <tr><td>31</td><td>चंदरू जाट/प्रभु जाट</td><td>51 किलो</td><td>शक्कर</td></tr>
+    <tr><td>32</td><td>राहुल जमदार (बालदा कॉलोनी)</td><td>51 किलो</td><td>शक्कर</td></tr>
+    <tr><td>33</td><td>राजेन्द्र मंजे / निर्मला बाई मंजे</td><td>51 किलो</td><td>शक्कर</td></tr>
+    <tr><td>34</td><td>कमल कोतूल</td><td>111 किलो</td><td>शक्कर</td></tr>
+    <tr><td>35</td><td>अशोक चतुर जमदार</td><td>61 किलो</td><td>बेसन</td></tr>
+    <tr><td>36</td><td>जय रणजीत सरकार</td><td>51 किलो</td><td>शक्कर</td></tr>
+    <tr><td>37</td><td>अजय कोतुल (महाराष्ट्र)</td><td>51 किलो</td><td>शक्कर</td></tr>
+    <tr><td>38</td><td>हेमन्त दुलीचन्द बैंकट</td><td>1 डब्बा</td><td>तेल</td></tr>
+    <tr><td>40</td><td>ध्रुव मदनलाल वर्मा</td><td>1 डब्बा</td><td>तेल</td></tr>
+    <tr><td>41</td><td>गुलाब जमदार जी</td><td>₹5100</td><td>नगद</td></tr>
+    <tr><td>42</td><td>गोपाल कोतवाल (मालवमिल)</td><td>₹1100</td><td>नगद</td></tr>
+    <tr><td>43</td><td>सुमित बहादुर पाटिल</td><td>5 डब्बा</td><td>तेल</td></tr>
+    <tr><td>44</td><td>ऋषि दिलीप वर्मा</td><td>51 किलो</td><td>आटा</td></tr>
+    <tr><td>45</td><td>अजय कोतुल</td><td>111 किलो</td><td>शक्कर</td></tr>
+    <tr><td>46</td><td>वीरेंद्र डालूराम जमदार</td><td>51 किलो</td><td>आटा</td></tr>
+    <tr><td>47</td><td>सोनू बाबा</td><td>101 किलो</td><td>आटा</td></tr>
+    <tr><td>48</td><td>सुरेश राजपूत</td><td>1 डब्बा, 11 किलो</td><td>तेल, नमक</td></tr>
+    <tr><td>49</td><td>श्याम जमदार (बुराड़ी)</td><td>₹2100</td><td>नगद</td></tr>
+    <tr><td>50</td><td>अजय जाट</td><td>51 किलो</td><td>शक्कर</td></tr>
+    <tr><td>51</td><td>शिव भवानी (दिल्ली)</td><td>1 डब्बा, 21 किलो</td><td>तेल, शक्कर</td></tr>
+    <tr><td>52</td><td>सचिन वर्मा / राजवीर वर्मा</td><td>21 किलो</td><td>शक्कर</td></tr>
+    <tr><td>53</td><td>अतुल जमदार</td><td>21 किलो</td><td>नमक</td></tr>
+    <tr><td>54</td><td>राज अग्रहरि</td><td>51 किलो</td><td>शक्कर</td></tr>
+    <tr><td>55</td><td>राम भैया</td><td>61 किलो</td><td>शक्कर</td></tr>
+    <tr><td>56</td><td>नवल पटेल (महू)</td><td>61 किलो</td><td>मावा</td></tr>
+    <tr><td>57</td><td>अजय जाट</td><td>51 किलो</td><td>शक्कर</td></tr>
+    <tr><td>58</td><td>पुष्कर जमदार</td><td>2 डब्बा</td><td>तेल</td></tr>
+    <tr><td>59</td><td>शिवांश रोशन जाट</td><td>51 किलो</td><td>शक्कर</td></tr>
+    <tr><td>60</td><td>अमित धन्नालाल चौधरी</td><td>1 डब्बा</td><td>घी</td></tr>
+    <tr><td>61</td><td>गोलू चौधरी</td><td>51 किलो</td><td>आटा</td></tr>
+    <tr><td>62</td><td>हेमन्त जमदार</td><td>51 किलो, 11 किलो</td><td>आटा, नमक</td></tr>
+    <tr><td>63</td><td>महेश भैया</td><td>101 किलो</td><td>शक्कर</td></tr>
+    <tr><td>64</td><td>गोलू लड्डू कोतुल</td><td>251 किलो</td><td>शक्कर</td></tr>
+    <tr><td>65</td><td>ईश्वर चौधरी (दिल्ली)</td><td>51 किलो</td><td>आटा</td></tr>
+    <tr><td>66</td><td>केवल कोतवाल</td><td>251 किलो</td><td>शक्कर</td></tr>
+    <tr><td>67</td><td>श्याम प्रेमी, निलेश जाट</td><td>6 डब्बा</td><td>तेल</td></tr>
+    <tr><td>68</td><td>महेश भैया</td><td>101 किलो</td><td>शक्कर</td></tr>
+    <tr><td>69</td><td>राज चौधरी</td><td>101 किलो</td><td>आटा</td></tr>
+    <tr><td>70</td><td>गुलज़ारी कोतुल</td><td>51 किलो</td><td>शक्कर</td></tr>
+    <tr><td>71</td><td>विशाल जाट</td><td>51 किलो</td><td>आटा</td></tr>
+    <tr><td>72</td><td>कन्हैया जाट</td><td>101 किलो</td><td>शक्कर</td></tr>
+    <tr><td>73</td><td>स्वर्गीय मुकेश भवानी</td><td>51 किलो</td><td>शक्कर</td></tr>
+    <tr><td>74</td><td>कमल भवानी (दिल्ली)</td><td>51 किलो</td><td>शक्कर</td></tr>
+    <tr><td>75</td><td>रोहन कोतुल</td><td>51 किलो</td><td>शक्कर</td></tr>
+    <tr><td>76</td><td>पीयूष साहिल वर्मा</td><td>100 किलो</td><td>आटा</td></tr>
+    <tr><td>77</td><td>मोनिश लाला मंजे</td><td>51 किलो</td><td>आटा</td></tr>
+    <tr><td>78</td><td>विजय जमदार (दिल्ली)</td><td>₹1100</td><td>नगद</td></tr>
+    <tr><td>79</td><td>शिव मंजे (लकड़ी पीटा)</td><td>106 किलो</td><td>शक्कर</td></tr>
+    <tr><td>80</td><td>दिनेश राजकुमार मंजे</td><td>₹1100</td><td>नगद</td></tr>
+    <tr><td>81</td><td>नंदू भगवती प्रसाद वर्मा (महाराष्ट्र)</td><td>₹2100</td><td>नगद</td></tr>
+    <tr><td>81</td><td>छोटे लाल जी जमदार / भगवती प्रसाद</td><td>1 डब्बा</td><td>घी</td></tr>
+    <tr><td>82</td><td>मोहन राजू जाट (M*R)</td><td>61 किलो</td><td>मावा</td></tr>
+    <tr><td>83</td><td>संजू जाट / कमल जाट</td><td>51 किलो</td><td>मावा</td></tr>
+    <tr><td>84</td><td>राजू जमदार / सरकार</td><td>₹5100</td><td>नगद</td></tr>
+    <tr><td>85</td><td>अमर राधेश्याम जी वर्मा</td><td>51 किलो</td><td>आटा</td></tr>
+    <tr><td>86</td><td>शेखर रूपा जमदार</td><td>₹3100</td><td>नगद</td></tr>
+    <tr><td>87</td><td>राजेश गेंदालाल जी वेंकट</td><td>₹6100</td><td>नगद</td></tr>
+    <tr><td>88</td><td>कैलाश कल्लूराम जमदार</td><td>₹6100</td><td>नगद</td></tr>
+    <tr><td>89</td><td>कल्लू जी जमदार / अजय जमदार</td><td>₹8100</td><td>नगद</td></tr>
+    <tr><td>90</td><td>बहादुर मंजे जी</td><td>₹7100</td><td>नगद</td></tr>
+    <tr><td>91</td><td>मुकेश मोतिलाल जी जमदार</td><td>51 किलो</td><td>शक्कर</td></tr>
+    <tr><td>92</td><td>कालू हजारीलाल जी जमदार</td><td>40 किलो</td><td>आटा</td></tr>
+    <tr><td>93</td><td>पप्पू कन्हैया लाल जी वर्मा</td><td>₹2200</td><td>नगद</td></tr>
+    <tr><td>94</td><td>सतीश मंजे / कृष्णा मंजे</td><td>₹2100</td><td>नगद</td></tr>
+    <tr><td>95</td><td>कालू कोतुल जी</td><td>₹3100</td><td>नगद</td></tr>
+    <tr><td>96</td><td>राधे जमदार</td><td>₹1100</td><td>नगद</td></tr>
+    <tr><td>97</td><td>रमेश भवानी जी</td><td>₹1100</td><td>नगद</td></tr>
+    <tr><td>98</td><td>सुनील छोटेलाल कोतुल</td><td>₹6100</td><td>नगद</td></tr>
+    <tr><td>99</td><td>विनय अर्जुन चौधरी</td><td>51 किलो</td><td>शक्कर</td></tr>
+    <tr><td>100</td><td>कलवा जमदार (महू)</td><td>51 किलो</td><td>आटा</td></tr>
+    <tr><td>101</td><td>राजवीर पटेल (महू)</td><td>51 किलो</td><td>शक्कर</td></tr>
+    <tr><td>102</td><td>विनय मनोहर जाट</td><td>₹5100</td><td>नगद</td></tr>
+    <tr><td>103</td><td>चेन सिंह जी (मालवमिल)</td><td>₹4000</td><td>नगद</td></tr>
+    <tr><td>104</td><td>शिव कोतुल जी</td><td>₹5100</td><td>नगद</td></tr>
+    <tr><td>105</td><td>गोपाल कन्हैयालाल जी वर्मा</td><td>₹3100</td><td>नगद</td></tr>
+    <tr><td>106</td><td>शरवन प्रदीप वर्मा</td><td>₹1000</td><td>नगद</td></tr>
+    <tr><td>107</td><td>कालू जमदार (गजक बाले)</td><td>100 किलो</td><td>आटा</td></tr>
+    <tr><td>108</td><td>आचार्य मनोज उपाध्याय</td><td>₹2100</td><td>नगद</td></tr>
+    <tr><td>109</td><td>कृष्णा मंजे / शंकर जाट / राजा राज</td><td>5</td><td>गैस</td></tr>
+    <tr><td>110</td><td>शिव भवानी (दिल्ली)</td><td>1 डब्बा, 21 किलो</td><td>तेल, शक्कर</td></tr>
+    <tr><td>111</td><td>स्वर्गीय श्याम जमदार जी</td><td>5 डब्बा</td><td>तेल</td></tr>
+    <tr><td>112</td><td>मन्नू कन्हैयालाल जी वर्मा</td><td>61 किलो</td><td>मावा</td></tr>
+    <tr><td>113</td><td>रजत देव चौधरी</td><td>101 किलो</td><td>आटा</td></tr>
+    <tr><td>114</td><td>कांची मामा</td><td>₹7000</td><td>नगद</td></tr>
+    <tr><td>115</td><td>देवीलाल वर्मा (मालवमिल)</td><td>1 डब्बा</td><td>तेल</td></tr>
+    <tr><td>116</td><td>दिनेश मंजे (मालवमिल)</td><td>51 किलो</td><td>शक्कर</td></tr>
+    <tr><td>117</td><td>प्रताप लखन कोतुल</td><td>₹5100</td><td>नगद</td></tr>
+    <tr><td>118</td><td>स्वर्गीय भोजराज जी पटेल (महू)</td><td>₹5100</td><td>नगद</td></tr>
+    <tr><td>119</td><td>मोहन मंजे (बालदा कॉलोनी)</td><td>₹2100</td><td>नगद</td></tr>
+    <tr><td>120</td><td>स्वर्गीय छोटू जमदार जी / कृष्णा जमदार</td><td>2 डब्बा</td><td>घी</td></tr>
+    <tr><td>121</td><td>मनोहर जी वर्मा / स्वर्गीय दुलारे जी वर्मा (जलगांव)</td><td>संपूर्ण केले के पत्ते</td><td>भंडारे में</td></tr>
+    <tr><td>122</td><td>स्वर्गीय मांगीलाल जी जमदार / सुभाष जमदार</td><td>31 किलो</td><td>मावा</td></tr>
+    <tr><td>123</td><td>राजू वर्मा (बालदा कॉलोनी)</td><td>31 किलो</td><td>मावा</td></tr>
+    <tr><td>124</td><td>बहादुर कोतुल जी</td><td>51 किलो</td><td>बेसन</td></tr>
+    <tr><td>125</td><td>किशोर कोतुल जी</td><td>51 किलो</td><td>शक्कर</td></tr>
+    <tr><td>126</td><td>आनंद मनोज जाट</td><td>51 किलो</td><td>आटा</td></tr>
+    <tr><td>127</td><td>स्वर्गीय सतपाल वर्मा जी</td><td>200 किलो</td><td>आटा</td></tr>
+    <tr><td>128</td><td>दिलीप धन्नालाल चौधरी</td><td>100 किलो</td><td>आटा</td></tr>
+    <tr><td>129</td><td>कालू भवानी जी</td><td>51 किलो</td><td>आटा</td></tr>
+    <tr><td>130</td><td>लोकेश राम मंजे</td><td>61 किलो, 51 किलो</td><td>शक्कर, आटा</td></tr>
+    <tr><td>131</td><td>शुभम मुरली जी पाटिल</td><td>100 किलो</td><td>आटा</td></tr>
+    <tr><td>132</td><td>राधे श्याम पटेल / दिनेश पटेल</td><td>₹2100</td><td>नगद</td></tr>
+    <tr><td>133</td><td>दीवान ओम जी जमदार</td><td>₹1100</td><td>नगद</td></tr>
+    <tr><td>134</td><td>राधे किशन खलीफा जी</td><td>₹5100</td><td>नगद</td></tr>
+    <tr><td>135</td><td>देवीलाल मानकचंद कोतवाल (कुंदन नगर)</td><td>51 किलो</td><td>आटा</td></tr>
+    <tr><td>136</td><td>अनिल कमल कोतुल</td><td>100 किलो</td><td>आटा</td></tr>
+    <tr><td>137</td><td>गुड्डा जमदार</td><td>151 किलो</td><td>शक्कर</td></tr>
+    <tr><td>138</td><td>इंदौरी पहलवान / बसंत पहलवान जी</td><td>51 किलो</td><td>आटा</td></tr>
+    <tr><td>139</td><td>स्वर्गीय कैलाश चौधरी जी</td><td>1 डब्बा</td><td>तेल</td></tr>
+    <tr><td>140</td><td>श्यामू जमदार / मोटी बाई पलासिया</td><td>101 किलो</td><td>आटा</td></tr>
+    <tr><td>141</td><td>करण चौधरी / निर्मला बाई</td><td>100 किलो</td><td>आटा</td></tr>
+    <tr><td>142</td><td>स्वर्गीय लीलाधर जी चौधरी / तेजा कोतवाल जी</td><td>31 किलो</td><td>मावा</td></tr>
+    <tr><td>143</td><td>आकाश लाले जाट</td><td>111 किलो</td><td>आटा</td></tr>
+    <tr><td>144</td><td>स्वर्गीय बबलू चौधरी</td><td>51 किलो</td><td>शक्कर</td></tr>
+    <tr><td>145</td><td>सिकंदर जमदार</td><td>₹3100</td><td>नगद</td></tr>
+    <tr><td>146</td><td>संजू भोलाराम जमदार</td><td>₹2100</td><td>नगद</td></tr>
+    <tr><td>147</td><td>भजन जमदार</td><td>₹1100</td><td>नगद</td></tr>
+    <tr><td>148</td><td>स्वर्गीय आदित्य राजपूत रंजीत वर्मा</td><td>51 किलो</td><td>शक्कर</td></tr>
+    <tr><td>149</td><td>भूरी बाई राजे मंजे</td><td>₹1100</td><td>नगद</td></tr>
+    <tr><td>150</td><td>विजय चम्मपालल जाट</td><td>₹1100</td><td>नगद</td></tr>
+    <tr><td>151</td><td>लोकेश छोटेलाल जमदार</td><td>2</td><td>गैस</td></tr>
+    <tr><td>152</td><td>जगन जी बैंकट</td><td>51 किलो</td><td>शक्कर</td></tr>
+    <tr><td>153</td><td>बंटी भवानी</td><td>₹1100</td><td>नगद</td></tr>
+    <tr><td>154</td><td>विक्रम चमन जाट</td><td>51 किलो</td><td>शक्कर</td></tr>
+  </tbody>
+</table>
+
+<div id="noResults" class="no-results" style="display:none;">
+  कोई परिणाम नहीं मिला
+</div>
+
+<script>
+  const searchInput = document.getElementById("searchName");
+  const filterType = document.getElementById("filterType");
+  const table = document.getElementById("donationTable");
+  const noResults = document.getElementById("noResults");
+
+  function filterTable() {
+    const searchValue = searchInput.value.toLowerCase();
+    const typeValue = filterType.value;
+    let visibleCount = 0;
+
+    Array.from(table.tBodies[0].rows).forEach(row => {
+      const name = row.cells[1].textContent.toLowerCase();
+      const type = row.cells[3].textContent;
+
+      const matchName = name.includes(searchValue);
+      const matchType = typeValue === "" || type.includes(typeValue);
+
+      if (matchName && matchType) {
+        row.style.display = "";
+        visibleCount++;
+      } else {
+        row.style.display = "none";
+      }
+    });
+
+    noResults.style.display = visibleCount === 0 ? "block" : "none";
+  }
+
+  searchInput.addEventListener("keyup", filterTable);
+  filterType.addEventListener("change", filterTable);
+
+  // -------- Sorting Functionality --------
+  const headers = table.querySelectorAll("th");
+  let sortDirection = Array(headers.length).fill(true); // true = ascending
+
+  headers.forEach((header, index) => {
+    header.style.cursor = "pointer";
+    header.addEventListener("click", () => {
+      const tbody = table.tBodies[0];
+      const rows = Array.from(tbody.rows);
+      const isNumberColumn = index === 0; // क्रम संख्या
+      const isAmountColumn = index === 2; // दान राशि/मात्रा (optional numeric sort)
+
+      rows.sort((a, b) => {
+        let aText = a.cells[index].textContent.trim();
+        let bText = b.cells[index].textContent.trim();
+
+        // Convert numeric columns
+        if (isNumberColumn) {
+          aText = parseInt(aText) || 0;
+          bText = parseInt(bText) || 0;
+        } else if (isAmountColumn) {
+          // Extract numbers from strings like "125 किलो" or "₹3100"
+          aText = parseInt(aText.replace(/[^\d]/g, "")) || 0;
+          bText = parseInt(bText.replace(/[^\d]/g, "")) || 0;
+        }
+
+        if (aText > bText) return sortDirection[index] ? 1 : -1;
+        if (aText < bText) return sortDirection[index] ? -1 : 1;
+        return 0;
+      });
+
+      // Re-add rows in sorted order
+      rows.forEach(row => tbody.appendChild(row));
+
+      // Toggle sort direction for next click
+      sortDirection[index] = !sortDirection[index];
+    });
+  });
+</script>
+
+</body>
+</html>
