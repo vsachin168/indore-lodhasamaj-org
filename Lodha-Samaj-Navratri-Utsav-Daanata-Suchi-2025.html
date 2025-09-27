@@ -4,7 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>लोधा समाज नवरात्र उत्सव दानदाता (2025)</title>
+  <meta name="description" content="लोधा समाज के नवरात्र उत्सव 2025 के दानदाताओं की सूची, सहयोग और दान की जानकारी।" />
   <link rel="icon" type="image/png" href="https://indore.lodhasamaj.org/wp-content/uploads/2023/10/Lodha-Samaj-Logo-1-300x260.png" />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari&display=swap" as="style" onload="this.rel='stylesheet'"/>
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari&display=swap" rel="stylesheet" /></noscript>
   <style>
     body {
       font-family: "Noto Sans Devanagari", sans-serif;
@@ -26,6 +29,7 @@
       width: auto;
     }
     .announcement {
+      font-family: "Noto Sans Devanagari", sans-serif;
       background: linear-gradient(135deg, #fff5f5, #ffeaea);
       border: 3px solid #c0392b;
       border-radius: 15px;
@@ -33,8 +37,11 @@
       margin: 30px auto;
       text-align: center;
       max-width: 900px;
-      font-family: "Noto Sans Devanagari", sans-serif;
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    }
+    .announcement.visible {
+      opacity: 1;
+      transition: opacity 0.6s ease-in;
     }
     .announcement h1 {
       color: #c0392b;
@@ -147,6 +154,7 @@
       font-size: 19px;
       margin: 10px 0;
       color: #c0392b;
+      white-space: pre-line;
     }
     .donor-card p {
       margin: 5px 0;
@@ -174,6 +182,7 @@
       padding: 20px;
       font-style: italic;
       color: #c0392b;
+      font-weight: 600;
     }
     /* Responsive */
     @media (max-width: 768px) {
@@ -207,6 +216,10 @@
       justify-content: center;
       align-items: center;
       overflow-y: auto;
+      outline: none;
+    }
+    .donor-modal[aria-hidden="false"] {
+      display: flex;
     }
     .donor-modal-content {
       position: relative;
@@ -249,6 +262,8 @@
       font-size: 35px;
       cursor: pointer;
       color: #c0392b;
+      background: none;
+      border: none;
     }
     .donor-controls {
       display: flex;
@@ -266,8 +281,10 @@
       cursor: pointer;
       transition: 0.3s;
     }
-    .donor-controls button:hover {
+    .donor-controls button:hover,
+    .donor-controls button:focus {
       background: #e74c3c;
+      outline: none;
     }
     .donor-modal-header {
       width: 100%;
@@ -342,48 +359,49 @@
   </style>
 </head>
 <body>
-  <header class="header-container">
-    <a href="https://indore.lodhasamaj.org/">
-      <img src="/wp-content/uploads/2023/10/Lodha-Samaj-Logo-1-300x260.png" alt="Lodha Samaj Logo" class="logo left-logo" />
+  <header class="header-container" role="banner">
+    <a href="https://indore.lodhasamaj.org/" aria-label="लोधा समाज मुख्य पृष्ठ">
+      <img src="/wp-content/uploads/2023/10/Lodha-Samaj-Logo-1-300x260.png" alt="लोधा समाज लोगो" class="logo left-logo" />
     </a>
-    <a href="https://indore.lodhasamaj.org/">
-      <img src="/wp-content/uploads/2023/10/Maa-durga-png.png" alt="New Logo" class="logo right-logo" />
+    <a href="https://indore.lodhasamaj.org/" aria-label="नवरात्र उत्सव लोगो">
+      <img src="/wp-content/uploads/2023/10/Maa-durga-png.png" alt="मां दुर्गा लोगो" class="logo right-logo" />
     </a>
   </header>
-  <div class="announcement" style="font-family:'Noto Sans Devanagari', sans-serif;">
-    <h1>🌸 लोधा समाज 🌸 </h1>
-    <h2> ✨ नवरात्र उत्सव – 2025 ✨ </h2>
-    <p>मां दुर्गा की असीम कृपा एवं आप सभी समाजबंधुओं के स्नेह-सहयोग से</p>
-    <p>इस वर्ष भी नवरात्र महोत्सव के पावन पर्व पर आयोजित होगा –</p>
-    <p class="important">✦ 45वां विशाल भंडारा<br />✦ 22वां नगर कन्या पूजन</p>
-    <p class="note">यह दिव्य और भव्य आयोजन सदैव हमारी समाज एकता व सहयोग की परंपरा का प्रतीक रहा है।<br />आप सभी श्रद्धालुजन के अथक सहयोग और आशीर्वाद से ही यह मंगल अवसर संभव हो पाता है।</p>
-    <h2>🙏✨ 2025 सहयोग कर्ताओं की पावन सूची ✨🙏</h2>
-  </div>
+  <main>
+    <section class="announcement" aria-live="polite">
+      <h1>🌸 लोधा समाज 🌸 </h1>
+      <h2> ✨ नवरात्र उत्सव – 2025 ✨ </h2>
+      <p>मां दुर्गा की असीम कृपा एवं आप सभी समाजबंधुओं के स्नेह-सहयोग से</p>
+      <p>इस वर्ष भी नवरात्र महोत्सव के पावन पर्व पर आयोजित होगा –</p>
+      <p class="important">✦ 45वां विशाल भंडारा<br />✦ 22वां नगर कन्या पूजन</p>
+      <p class="note">यह दिव्य और भव्य आयोजन सदैव हमारी समाज एकता व सहयोग की परंपरा का प्रतीक रहा है।<br />आप सभी श्रद्धालुजन के अथक सहयोग और आशीर्वाद से ही यह मंगल अवसर संभव हो पाता है।</p>
+      <h2>🙏✨ 2025 सहयोग कर्ताओं की पावन सूची ✨🙏</h2>
+    </section>
 
-  <div class="filters">
-    <input type="text" id="searchName" placeholder="दानदाता खोजें..." />
-    <select id="filterType">
-      <option value="">दान प्रकार चुनें</option>
-      <option value="शक्कर">शक्कर</option>
-      <option value="आटा">आटा</option>
-      <option value="तेल">तेल</option>
-      <option value="नमक">नमक</option>
-      <option value="मावा">मावा</option>
-      <option value="बेसन">बेसन</option>
-      <option value="नगद">नगद</option>
-      <option value="घी">घी</option>
-      <option value="गैस">गैस</option>
-      <option value="अन्य">अन्य</option>
-    </select>
-    <select id="sortBy">
-      <option value="">सॉर्ट बाय</option>
-      <option value="name">नाम (अक्षरानुक्रम)</option>
-      <option value="type">दान प्रकार के अनुसार</option>
-    </select>
-  </div>
+    <section class="filters" role="search" aria-label="दानदाता खोज और फ़िल्टर">
+      <input type="search" id="searchName" placeholder="दानदाता खोजें..." aria-label="दानदाता खोजें" />
+      <select id="filterType" aria-label="दान प्रकार चुनें">
+        <option value="">दान प्रकार चुनें</option>
+        <option value="शक्कर">शक्कर</option>
+        <option value="आटा">आटा</option>
+        <option value="तेल">तेल</option>
+        <option value="नमक">नमक</option>
+        <option value="मावा">मावा</option>
+        <option value="बेसन">बेसन</option>
+        <option value="नगद">नगद</option>
+        <option value="घी">घी</option>
+        <option value="गैस">गैस</option>
+        <option value="अन्य">अन्य</option>
+      </select>
+      <select id="sortBy" aria-label="सॉर्ट बाय">
+        <option value="">सॉर्ट बाय</option>
+        <option value="name">नाम (अक्षरानुक्रम)</option>
+        <option value="type">दान प्रकार के अनुसार</option>
+      </select>
+    </section>
 
-  <div class="donor-grid">
- <div class="donor-card">
+    <section class="donor-grid" role="list" aria-label="दानदाताओं की सूची">
+   <div class="donor-card">
       <div class="donor-photo">
         <img src="https://cdn.pixabay.com/photo/2019/08/11/18/59/icon-4399701_1280.png" alt="दानदाता फोटो" style="width:100%; height:100%; border-radius:50%;">
       </div>
@@ -778,62 +796,62 @@
     <p><strong>दान:</strong> 111 किलो नमक</p>
     <p><strong>प्रकार:</strong> नमक</p>
   </div>
-  </div>
+    </section>
 
-  <div id="noResults" class="no-results" style="display:none;">कोई परिणाम नहीं मिला</div>
+    <div id="noResults" class="no-results" style="display:none;">कोई परिणाम नहीं मिला</div>
 
-  <div id="donorModal" class="donor-modal">
-    <span class="donor-close">&times;</span>
-    <div class="donor-modal-content">
-      <div class="donor-modal-header">
-        <span class="donor-counter"></span>
-        <div class="donor-progress-container">
-          <div class="donor-progress-bar"></div>
+    <div id="donorModal" class="donor-modal" role="dialog" aria-hidden="true" aria-modal="true" aria-labelledby="modalName" tabindex="-1">
+      <button class="donor-close" aria-label="मोडल बंद करें">&times;</button>
+      <div class="donor-modal-content">
+        <div class="donor-modal-header">
+          <span class="donor-counter" aria-live="polite"></span>
+          <div class="donor-progress-container" aria-hidden="true">
+            <div class="donor-progress-bar"></div>
+          </div>
+        </div>
+        <div class="donor-modal-photo"></div>
+        <h3 id="modalName" class="donor-modal-name"></h3>
+        <p class="donor-modal-donation"></p>
+        <p class="donor-modal-type"></p>
+        <div class="donor-controls">
+          <button id="prevBtn" aria-label="पिछला दानदाता">❮</button>
+          <button id="playBtn" aria-label="स्वचालित प्ले चालू/बंद करें">►</button>
+          <button id="nextBtn" aria-label="अगला दानदाता">❯</button>
         </div>
       </div>
-      <div class="donor-modal-photo"></div>
-      <h3 class="donor-modal-name"></h3>
-      <p class="donor-modal-donation"></p>
-      <p class="donor-modal-type"></p>
-      <div class="donor-controls">
-        <button id="prevBtn">❮</button>
-        <button id="playBtn">►</button>
-        <button id="nextBtn">❯</button>
-      </div>
     </div>
-  </div>
+  </main>
 
-  <footer id="footer-nav" class="site-footer" style="background: linear-gradient(90deg, #000000, #c0392b); padding: 30px 0; color: #fff;">
+  <footer id="footer-nav" class="site-footer" style="background: linear-gradient(90deg, #000000, #c0392b); padding: 30px 0; color: #fff;" role="contentinfo">
     <div class="container" style="max-width:1200px; margin:0 auto; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center;">
       <div class="footer-left" style="font-family:'Noto Sans Devanagari', sans-serif; font-size:16px;">
         © 2025 लोधा समाज. सभी अधिकार सुरक्षित।
       </div>
-      <div class="footer-socials" style="display:flex; align-items:center;">
-        <a href="https://www.facebook.com/profile.php?id=61552495104262" target="_blank" title="Facebook" class="socials-item" style="margin:0 5px; color:#fff; font-size:20px;"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://twitter.com/LodhaS11845" target="_blank" title="Twitter" class="socials-item" style="margin:0 5px; color:#fff; font-size:20px;"><i class="fab fa-twitter"></i></a>
-        <a href="https://www.instagram.com/lodha.samaj/" target="_blank" title="Instagram" class="socials-item" style="margin:0 5px; color:#fff; font-size:20px;"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.youtube.com/@lodhasamajindore2762" target="_blank" title="YouTube" class="socials-item" style="margin:0 5px; color:#fff; font-size:20px;"><i class="fab fa-youtube"></i></a>
-        <a href="https://web.whatsapp.com/send?phone=919826324370" target="_blank" title="WhatsApp" class="socials-item" style="margin:0 5px; color:#fff; font-size:20px;"><i class="fab fa-whatsapp"></i></a>
-      </div>
+      <nav class="footer-socials" aria-label="सामाजिक मीडिया लिंक" style="display:flex; align-items:center;">
+        <a href="https://www.facebook.com/profile.php?id=61552495104262" target="_blank" rel="noopener" title="Facebook" class="socials-item" style="margin:0 5px; color:#fff; font-size:20px;" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com/LodhaS11845" target="_blank" rel="noopener" title="Twitter" class="socials-item" style="margin:0 5px; color:#fff; font-size:20px;" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.instagram.com/lodha.samaj/" target="_blank" rel="noopener" title="Instagram" class="socials-item" style="margin:0 5px; color:#fff; font-size:20px;" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.youtube.com/@lodhasamajindore2762" target="_blank" rel="noopener" title="YouTube" class="socials-item" style="margin:0 5px; color:#fff; font-size:20px;" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://web.whatsapp.com/send?phone=919826324370" target="_blank" rel="noopener" title="WhatsApp" class="socials-item" style="margin:0 5px; color:#fff; font-size:20px;" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      </nav>
       <div class="footer-site-info" style="font-family:'Noto Sans Devanagari', sans-serif; font-size:16px; text-align:right; display:flex; align-items:center; justify-content:flex-end; gap:8px;">
         <span>Powered by</span>
-        <a href="https://www.armourinfosec.com/" target="_blank">
-          <img src="https://www.armourinfosec.io/wp-content/uploads/2021/05/armour-infosec.png" alt="Armour Infosec" style="height:30px; width:auto;">
+        <a href="https://www.armourinfosec.com/" target="_blank" rel="noopener" aria-label="Armour Infosec">
+          <img src="https://www.armourinfosec.io/wp-content/uploads/2021/05/armour-infosec.png" alt="Armour Infosec लोगो" style="height:30px; width:auto;">
         </a>
       </div>
     </div>
   </footer>
 
   <script>
-    // Fade in announcement
-    window.addEventListener("DOMContentLoaded", () => {
-      const announcement = document.querySelector(".announcement");
-      if (announcement) {
-        setTimeout(() => {
-          announcement.classList.add("visible");
-        }, 100);
-      }
-    });
+    // Debounce function wrapper for search input handler
+    function debounce(func, wait = 300) {
+      let timeout;
+      return (...args) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), wait);
+      };
+    }
 
     const searchInput = document.getElementById("searchName");
     const filterType = document.getElementById("filterType");
@@ -892,12 +910,12 @@
       cardsArray.forEach((card) => donorGrid.appendChild(card));
     }
 
-    searchInput.addEventListener("keyup", () => {
+    searchInput.addEventListener("keyup", debounce(() => {
       filterDonors();
       if (sortBy.value) {
         sortDonorCards(sortBy.value);
       }
-    });
+    }, 300));
 
     filterType.addEventListener("change", () => {
       filterDonors();
@@ -913,7 +931,7 @@
       }
     });
 
-    // Modal functionality
+    // Modal functionality with keyboard accessibility and aria attributes
     let currentIndex = 0;
     let autoPlay = false;
     let autoPlayInterval;
@@ -950,6 +968,8 @@
           progressBar.style.width = "100%";
         }, 50);
       }
+      modal.setAttribute('aria-hidden', 'false');
+      modal.focus();
     }
 
     function openModal(index) {
@@ -960,6 +980,7 @@
 
     function closeModal() {
       modal.style.display = "none";
+      modal.setAttribute('aria-hidden', 'true');
       stopAutoPlay();
     }
 
@@ -988,8 +1009,12 @@
       progressBar.style.width = "0%";
     }
 
-    donorCardsArray.forEach((card, i) => {
-      card.addEventListener("click", () => openModal(i));
+    donorGrid.addEventListener("click", (e) => {
+      let card = e.target.closest('.donor-card');
+      if (card) {
+        const index = donorCardsArray.indexOf(card);
+        if (index !== -1) openModal(index);
+      }
     });
 
     closeBtn.addEventListener("click", closeModal);
@@ -1002,6 +1027,14 @@
     playBtn.addEventListener("click", () =>
       autoPlay ? stopAutoPlay() : startAutoPlay()
     );
+
+    // Close modal with keyboard ESC
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.style.display === "flex") {
+        closeModal();
+      }
+    });
+
   </script>
 </body>
 </html>
