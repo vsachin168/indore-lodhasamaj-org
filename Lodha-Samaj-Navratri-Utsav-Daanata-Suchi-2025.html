@@ -366,7 +366,33 @@
           padding: 6px 10px;
         }
       }
+      /* Desktop footer layout (default) */
+      #footer-nav .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+      }
 
+      /* Mobile fix */
+      @media (max-width: 768px) {
+        #footer-nav .container {
+          flex-direction: column;     /* stack items vertically */
+          text-align: center;         /* center all content */
+          gap: 15px;                  /* spacing between sections */
+        }
+
+        #footer-nav .footer-left,
+        #footer-nav .footer-socials,
+        #footer-nav .footer-site-info {
+          text-align: center !important;
+          justify-content: center !important;
+        }
+
+        #footer-nav .footer-site-info img {
+          height: 25px;   /* slightly smaller logo for mobile */
+        }
+      }
     </style>
 
   </header>
@@ -718,14 +744,14 @@
     </div>
 
     <!-- Footer Right: Armour Infosec Logo -->
-    <div class="footer-site-info" style="text-align:right;">
+    <div class="footer-site-info" style="font-family:'Noto Sans Devanagari', sans-serif; font-size:16px; text-align:right; display:flex; align-items:center; justify-content:flex-end; gap:8px;">
+      <span>Powered by</span>
       <a href="https://www.armourinfosec.com/" target="_blank">
         <img src="https://www.armourinfosec.io/wp-content/uploads/2021/05/armour-infosec.png" 
              alt="Armour Infosec" 
-             style="height:40px; width:auto;">
+             style="height:30px; width:auto;">
       </a>
     </div>
-  </div>
 </footer>
 
 
