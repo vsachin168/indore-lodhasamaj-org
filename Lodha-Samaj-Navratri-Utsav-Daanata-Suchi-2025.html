@@ -338,19 +338,22 @@
         background-color: #e74c3c; /* red */
         transition: width 0.3s linear;
       }
+
+            /* Mobile adjustments */
       @media (max-width: 600px) {
         .donor-modal-content {
-          width: 95%;        /* take almost full width */
-          max-width: 95%;    /* override the desktop max-width */
-          padding: 15px;     /* reduce padding for smaller screen */
+          width: 90%;
+          max-width: 400px;  /* smaller max width */
+          padding: 15px;
+          margin: 40px auto; /* space for close button */
         }
 
         .donor-modal-photo img {
-          max-width: 90%;    /* shrink image */
+          max-width: 80%;
         }
 
         .donor-modal-name {
-          font-size: 20px;   /* smaller font */
+          font-size: 20px;
         }
 
         .donor-modal-donation,
@@ -359,8 +362,8 @@
         }
 
         .donor-controls button {
-          font-size: 24px;   /* slightly smaller buttons */
-          padding: 8px 12px;
+          font-size: 22px;
+          padding: 6px 10px;
         }
       }
 
