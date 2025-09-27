@@ -2,15 +2,17 @@
 <html lang="hi">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>लोधा समाज नवरात्र उत्सव दानदाता (2025)</title>
-  <link rel="icon" type="image/png" href="https://indore.lodhasamaj.org/wp-content/uploads/2023/10/Lodha-Samaj-Logo-1-300x260.png">
+  <link rel="icon" type="image/png" href="/wp-content/uploads/2023/10/Lodha-Samaj-Logo-1-300x260.png">
 </head>
 <body>
   <header class="header-container">
-    <img src="https://indore.lodhasamaj.org/wp-content/uploads/2023/10/Lodha-Samaj-Logo-1-300x260.png" alt="Lodha Samaj Logo" class="logo left-logo">
+    <img src="/wp-content/uploads/2023/10/Lodha-Samaj-Logo-1-300x260.png" alt="Lodha Samaj Logo" class="logo left-logo">
     <h1>लोधा समाज उत्सव समिति</h1>
-    <img src="https://png.pngtree.com/png-vector/20250904/ourmid/pngtree-beautiful-maa-durga-face-transparent-background-png-image_17365184.webp" alt="New Logo" class="logo right-logo">
+    <img src="/wp-content/uploads/2023/10/maa-durga-face-transparent-background-png-image_17365184.webp" alt="New Logo" class="logo right-logo">
     <style>
+
       body {
         font-family: "Noto Sans Devanagari", sans-serif;
         margin: 20px;
@@ -22,6 +24,7 @@
       .header-container {
         display: flex;
         align-items: center;
+        justify-content: space-between;
         margin-bottom: 30px;
         padding: 10px 20px;
       }
@@ -30,36 +33,102 @@
         flex: 1;
         text-align: center;
         font-size: 48px;
-        color: #c0392b; /* Dark Red */
-        margin: 0 20px;
+        color: #c0392b;
+        margin: 0 10px;
       }
 
       .logo {
-        max-height: 180px; /* adjust logo height */
+        max-height: 180px;
         width: auto;
       }
 
-      /* Filters */
-      .filters {
-        margin-bottom: 20px;
-        display: flex;
-        gap: 10px;
-        justify-content: center;
-        flex-wrap: wrap;
+      @media (max-width: 768px) {
+        .header-container {
+          flex-direction: row;   /* keep in one line */
+          justify-content: space-between;
+        }
+
+        .header-container h1 {
+          font-size: 20px;  /* smaller font for mobile */
+          margin: 0 5px;
+        }
+
+        .logo {
+          max-height: 50px; /* shrink logos for mobile */
+        }
       }
 
-      input, select {
-        padding: 8px 12px;
-        font-size: 14px;
-        border: 1px solid #e74c3c;
-        border-radius: 6px;
-        outline: none;
-        transition: 0.3s;
+      .donor-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+        padding: 20px;
+        max-width: 100%;
       }
 
-      input:focus, select:focus {
-        border-color: #e74c3c;
-        box-shadow: 0 0 5px rgba(231, 76, 60, 0.3);
+      /* Limit max 5 cards in one row */
+      @media (min-width: 1200px) {
+        .donor-grid {
+          grid-template-columns: repeat(5, 1fr);
+        }
+      }
+
+      .donor-card h3 {
+        font-size: 19px;
+        margin: 10px 0;
+        color: #c0392b; /* red for donor name */
+      }
+
+      .donor-card p {
+        margin: 5px 0;
+        font-size: 16px;
+        color: #333; /* default text color */
+      }
+
+      /* Specific colors for donation amount and type */
+      .donor-card p strong {
+        color: #2980b9; /* blue for labels like "दान:" or "प्रकार:" */
+      }
+
+      .donor-card p span.amount {
+        font-size: 16px;
+        color: #27ae60; /* green for donation amount */
+      }
+
+      .donor-card p span.type {
+        font-size: 16px; 
+        color: #8e44ad; /* purple for donation type */
+      }
+
+      .donor-card {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        padding: 20px;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+      }
+
+      /* Zoom effect on hover/touch */
+      .donor-card:hover,
+      .donor-card:active {
+        transform: scale(1.20);
+        box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+      }
+
+      .donor-photo {
+        width: 150px;      /* fixed width */
+        height: 150px;     /* fixed height */
+        border-radius: 50%; /* make it circular */
+        overflow: hidden;   /* ensures image stays within circle */
+        margin: 0 auto 10px; /* center the photo with bottom spacing */
+      }
+
+      .donor-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* ensures image fills the container without distortion */
       }
 
       /* Second header <h2> styling */
@@ -78,38 +147,55 @@
         font-weight: 500;
       }
 
+      /* Filters */
+      /* Filters container */
+      .filters {
+        margin: 20px auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+        align-items: center;
+      }
 
-      /* Table styling */
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        background: #fff;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      /* Search input and dropdown styling */
+      .filters input,
+      .filters select {
+        padding: 10px 14px;
+        font-size: 14px;
+        border: 1.5px solid #e74c3c;
         border-radius: 8px;
-        overflow: hidden;
+        outline: none;
+        transition: all 0.3s ease;
+        min-width: 210px; /* ensures a decent size */
       }
 
-      th, td {
-        border-bottom: 1px solid #f2d7d5;
-        padding: 12px 13px;
-        text-align: left;
-        transition: background 0.3s;
+      /* Focus effect */
+      .filters input:focus,
+      .filters select:focus {
+        border-color: #c0392b;
+        box-shadow: 0 0 8px rgba(192, 57, 43, 0.3);
       }
 
-      th {
-        background: #e74c3c; /* Red Header */
-        color: #fff;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
+      /* Hover effect */
+      .filters input:hover,
+      .filters select:hover {
+        border-color: #c0392b;
       }
 
-      tr:nth-child(even) {
-        background: #fdecea;
-      }
+      /* Mobile adjustments */
+      @media (max-width: 410px) {
+        .filters {
+          flex-direction: column;
+          gap: 10px;
+        }
 
-      tr:hover {
-        background: #f9c0b7;
+        .filters input,
+        .filters select {
+          width: 80%;
+          font-size: 14px;
+          min-width: unset;
+        }
       }
 
       .no-results {
@@ -119,56 +205,26 @@
         color: #c0392b;
       }
 
-      /* Responsive: table & header */
       @media (max-width: 768px) {
-        .header-container {
-          flex-direction: column;
-          text-align: center;
-        }
+          .header-container {
+              flex-direction: row;       /* keep all inline */
+              justify-content: space-between;
+              align-items: center;
+              text-align: center;
+          }
 
-        .header-container h1 {
-          margin: 10px 0;
-          font-size: 22px;
-        }
+          .header-container h1 {
+              font-size: 18px;           /* smaller font for mobile */
+              margin: 0 5px;
+          }
 
-        .logo {
-          max-height: 60px;
-          margin: 5px 0;
-        }
-
-        table, thead, tbody, th, td, tr {
-          display: block;
-        }
-
-        thead tr {
-          display: none;
-        }
-
-        tr {
-          margin-bottom: 15px;
-          border: 1px solid #f2d7d5;
-          border-radius: 8px;
-          padding: 10px;
-          background: #fff;
-        }
-
-        td {
-          padding: 6px 8px;
-          text-align: right;
-          position: relative;
-        }
-
-        td::before {
-          content: attr(data-label);
-          position: absolute;
-          left: 10px;
-          width: 50%;
-          font-weight: 600;
-          text-align: left;
-          color: #c0392b;
-        }
+          .logo {
+              max-height: 50px;          /* shrink logos to fit */
+              width: auto;
+          }
       }
     </style>
+
   </header>
 
   <h1> नवरात्र उत्सव दानदाता सूची (2025)</h1>
@@ -189,38 +245,232 @@
     </select>
   </div>
 
-<table id="donationTable">
-  <thead>
-    <tr>
-      <th>क्रम संख्या</th>
-      <th>दानदाता का नाम</th>
-      <th>दान राशि/मात्रा</th>
-      <th>दान प्रकार</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td>1</td><td>स्व. श्री किशोरी जी मंजे एवं श्रीमती दीपा बाई जी मंजे के परिवार</td><td>125 किलो</td><td>शक्कर</td></tr>
-    <tr><td>2</td><td>श्री अमित जी राजपूत एवं श्री सुनील जी वर्मा (महाराष्ट्र वाले)</td><td>11 डब्बा</td><td>तेल</td></tr>
-    <tr><td>3</td><td>श्री रिंकू जी (DJ वाले)</td><td>2 डब्बा</td><td>तेल</td></tr>
-    <tr><td>4</td><td>श्री गोपाल जी पटेल (महू)</td><td>₹5100</td><td>नगद</td></tr>
-    <tr><td>5</td><td>स्व. श्रीमती कुंदन बाई के पुत्र श्री गोलू जी लोवंशी (दिल्ली) की ओर से</td><td>₹5100</td><td>नगद</td></tr>
-    <tr><td>6</td><td>श्री राकेश जी चौधरी (बाल्दा वाले)</td><td>101 किलो आटा + ₹1100</td><td>आटा, नगद</td></tr>
-    <tr><td>7</td><td>श्री मुन्ना जी मंजे (महू)</td><td>1 डब्बा</td><td>तेल</td></tr>
-    <tr><td>8</td><td>श्री आनंद जी जाट</td><td>51 किलो</td><td>आटा</td></tr>
-    <tr><td>9</td><td>गुप्त दानदाता</td><td>1 डब्बा</td><td>तेल</td></tr>
-    <tr><td>10</td><td>श्री राकेश जी चौधरी (बाल्दा वाले)</td><td>2 डब्बा</td><td>तेल</td></tr>
-    <tr><td>11</td><td>श्री विराट, सम्राट एवं चिराग जी मंजे</td><td>51 किलो</td><td>शक्कर</td></tr>
-    <tr><td>12</td><td>डॉ. सेठिया</td><td>₹500</td><td>नगद</td></tr>
-    <tr><td>13</td><td>श्री नंदू जी वर्मा (साईदा वाले)</td><td>101 किलो</td><td>आटा</td></tr>
-    <tr><td>14</td><td>श्री अजय जी जाट</td><td>51 किलो</td><td>आटा</td></tr>
-    <tr><td>15</td><td>श्री शिवांश जी जाट</td><td>51 किलो</td><td>आटा</td></tr>
-    <tr><td>16</td><td>श्री केवल जी वर्मा</td><td>251 किलो</td><td>शक्कर</td></tr>
-    <tr><td>17</td><td>श्री मन्नूलाल जी वर्मा एवं सचिन जी वर्मा</td><td>71 किलो</td><td>मावा</td></tr>
-    <tr><td>18</td><td>स्व. श्री करन जाट की सुपुत्री कायऱा जी जाट की ओर से</td><td>101 पानी जार</td><td>पानी</td></tr>
-    <tr><td>19</td><td>श्री संजय जी जमदार (बाबा)</td><td>501 किलो</td><td>शक्कर</td></tr>
-    <tr><td>20</td><td>श्री प्रताप कोतुल (कोषाध्यक्ष: लोधा समाज, इंदौर)</td><td>101 किलो</td><td>शक्कर</td></tr>
-  </tbody>
-</table>
+  <div class="donor-grid">
+    <div class="donor-card">
+      <div class="donor-photo">
+        <img src="team-1.png" alt="दानदाता फोटो" style="width:100%; height:100%; border-radius:50%;">
+      </div>
+      <h3>स्व. श्री किशोरी जी मंजे एवं श्रीमती दीपा बाई जी मंजे के परिवार</h3>
+      <p><strong>दान:</strong> 125 किलो</p>
+      <p><strong>प्रकार:</strong> शक्कर</p>
+    </div>
+
+  <div class="donor-card">
+    <div class="donor-photo">
+      <img src="team-1.png" alt="दानदाता फोटो" style="width:100%; height:100%; border-radius:50%;">
+    </div>
+    <h3>श्री अमित जी राजपूत एवं श्री सुनील जी वर्मा (महाराष्ट्र वाले)</h3>
+    <p><strong>दान:</strong> 11 डब्बा</p>
+    <p><strong>प्रकार:</strong> तेल</p>
+  </div>
+
+  <div class="donor-card">
+    <div class="donor-photo">📸</div>
+    <h3>श्री रिंकू जी (DJ वाले)</h3>
+    <p><strong>दान:</strong> 2 डब्बा</p>
+    <p><strong>प्रकार:</strong> तेल</p>
+  </div>
+
+  <div class="donor-card">
+    <div class="donor-photo">📸</div>
+    <h3>श्री गोपाल जी पटेल (महू)</h3>
+    <p><strong>दान:</strong> ₹5100</p>
+    <p><strong>प्रकार:</strong> नगद</p>
+  </div>
+
+  <div class="donor-card">
+    <div class="donor-photo">📸</div>
+    <h3>स्व. श्रीमती कुंदन बाई के पुत्र श्री गोलू जी लोवंशी (दिल्ली) की ओर से</h3>
+    <p><strong>दान:</strong> ₹5100</p>
+    <p><strong>प्रकार:</strong> नगद</p>
+  </div>
+
+  <div class="donor-card">
+    <div class="donor-photo">📸</div>
+    <h3>श्री राकेश जी चौधरी (बाल्दा वाले)</h3>
+    <p><strong>दान:</strong> 101 किलो आटा + ₹1100</p>
+    <p><strong>प्रकार:</strong> आटा, नगद</p>
+  </div>
+
+  <div class="donor-card">
+    <div class="donor-photo">📸</div>
+    <h3>श्री मुन्ना जी मंजे (महू)</h3>
+    <p><strong>दान:</strong> 1 डब्बा</p>
+    <p><strong>प्रकार:</strong> तेल</p>
+  </div>
+
+  <div class="donor-card">
+    <div class="donor-photo">📸</div>
+    <h3>श्री आनंद जी जाट</h3>
+    <p><strong>दान:</strong> 51 किलो</p>
+    <p><strong>प्रकार:</strong> आटा</p>
+  </div>
+
+  <div class="donor-card">
+    <div class="donor-photo">📸</div>
+    <h3>गुप्त दानदाता</h3>
+    <p><strong>दान:</strong> 1 डब्बा</p>
+    <p><strong>प्रकार:</strong> तेल</p>
+  </div>
+
+  <div class="donor-card">
+    <div class="donor-photo">📸</div>
+    <h3>श्री राकेश जी चौधरी (बाल्दा वाले)</h3>
+    <p><strong>दान:</strong> 2 डब्बा</p>
+    <p><strong>प्रकार:</strong> तेल</p>
+  </div>
+
+  <div class="donor-card">
+    <div class="donor-photo">📸</div>
+    <h3>श्री विराट, सम्राट एवं चिराग जी मंजे</h3>
+    <p><strong>दान:</strong> 51 किलो</p>
+    <p><strong>प्रकार:</strong> शक्कर</p>
+  </div>
+
+  <div class="donor-card">
+    <div class="donor-photo">📸</div>
+    <h3>डॉ. सेठिया</h3>
+    <p><strong>दान:</strong> ₹500</p>
+    <p><strong>प्रकार:</strong> नगद</p>
+  </div>
+
+  <div class="donor-card">
+    <div class="donor-photo">📸</div>
+    <h3>श्री नंदू जी वर्मा (साईदा वाले)</h3>
+    <p><strong>दान:</strong> 101 किलो</p>
+    <p><strong>प्रकार:</strong> आटा</p>
+  </div>
+
+  <div class="donor-card">
+    <div class="donor-photo">📸</div>
+    <h3>श्री अजय जी जाट</h3>
+    <p><strong>दान:</strong> 51 किलो</p>
+    <p><strong>प्रकार:</strong> आटा</p>
+  </div>
+
+  <div class="donor-card">
+    <div class="donor-photo">📸</div>
+    <h3>श्री शिवांश जी जाट</h3>
+    <p><strong>दान:</strong> 51 किलो</p>
+    <p><strong>प्रकार:</strong> आटा</p>
+  </div>
+
+  <div class="donor-card">
+    <div class="donor-photo">📸</div>
+    <h3>श्री केवल जी वर्मा</h3>
+    <p><strong>दान:</strong> 251 किलो</p>
+    <p><strong>प्रकार:</strong> शक्कर</p>
+  </div>
+
+  <div class="donor-card">
+    <div class="donor-photo">📸</div>
+    <h3>श्री मन्नूलाल जी वर्मा एवं सचिन जी वर्मा</h3>
+    <p><strong>दान:</strong> 71 किलो</p>
+    <p><strong>प्रकार:</strong> मावा</p>
+  </div>
+
+  <div class="donor-card">
+    <div class="donor-photo">📸</div>
+    <h3>स्व. श्री करन जाट की सुपुत्री कायऱा जी जाट की ओर से</h3>
+    <p><strong>दान:</strong> 101 पानी जार</p>
+    <p><strong>प्रकार:</strong> पानी</p>
+  </div>
+
+  <div class="donor-card">
+    <div class="donor-photo">📸</div>
+    <h3>श्री संजय जी जमदार (बाबा)</h3>
+    <p><strong>दान:</strong> 501 किलो</p>
+    <p><strong>प्रकार:</strong> शक्कर</p>
+  </div>
+
+  <div class="donor-card">
+    <div class="donor-photo">📸</div>
+    <h3>श्री प्रताप कोतुल (कोषाध्यक्ष: लोधा समाज, इंदौर)</h3>
+    <p><strong>दान:</strong> 101 किलो</p>
+    <p><strong>प्रकार:</strong> शक्कर</p>
+  </div>
+
+  <div class="donor-card">
+    <div class="donor-photo">📸</div>
+    <h3>श्री मनोहर जी वर्मा एवं स्व. श्री दुलारे जी वर्मा (महाराष्ट्र वाले)</h3>
+    <p><strong>दान:</strong> सम्पूर्ण भंडारे हेतु</p>
+    <p><strong>प्रकार:</strong> केले के पत्तल</p>
+  </div>
+
+  <div class="donor-card">
+    <div class="donor-photo">📸</div>
+    <h3>याराना ग्रुप</h3>
+    <p><strong>दान:</strong> 5 छोटी</p>
+    <p><strong>प्रकार:</strong> गैस टंकी</p>
+  </div>
+
+  <div class="donor-card">
+    <div class="donor-photo">📸</div>
+    <h3>श्री मनोहर जी चौधरी</h3>
+    <p><strong>दान:</strong> 151 किलो</p>
+    <p><strong>प्रकार:</strong> आटा</p>
+  </div>
+
+  <div class="donor-card">
+    <div class="donor-photo">📸</div>
+    <h3>पंडित श्री मनोज जी उपाध्याय</h3>
+    <p><strong>दान:</strong> ₹2100 + 51</p>
+    <p><strong>प्रकार:</strong> नारियल (कन्या पूजन हेतु)</p>
+  </div>
+
+  <div class="donor-card">
+    <div class="donor-photo">📸</div>
+    <h3>श्री अजय जी जमदारी</h3>
+    <p><strong>दान:</strong> 21 किलो</p>
+    <p><strong>प्रकार:</strong> नमक</p>
+  </div>
+
+  <div class="donor-card">
+    <div class="donor-photo">📸</div>
+    <h3>श्री दिलीप जी वर्मा</h3>
+    <p><strong>दान:</strong> 51 किलो</p>
+    <p><strong>प्रकार:</strong> आटा</p>
+  </div>
+
+  <div class="donor-card">
+    <div class="donor-photo">📸</div>
+    <h3>श्री अशोक जी जमदार</h3>
+    <p><strong>दान:</strong> 125 किलो</p>
+    <p><strong>प्रकार:</strong> आटा</p>
+  </div>
+
+  <div class="donor-card">
+    <div class="donor-photo">📸</div>
+    <h3>श्री जय रणजीत सरकार</h3>
+    <p><strong>दान:</strong> 51 किलो</p>
+    <p><strong>प्रकार:</strong> आटा</p>
+  </div>
+
+  <div class="donor-card">
+    <div class="donor-photo">📸</div>
+    <h3>श्री रजत जी चौधरी</h3>
+    <p><strong>दान:</strong> 151 किलो</p>
+    <p><strong>प्रकार:</strong> आटा</p>
+  </div>
+
+  <div class="donor-card">
+    <div class="donor-photo">📸</div>
+    <h3>श्री अजय देवीलाल जी भवानी</h3>
+    <p><strong>दान:</strong> 51 किलो + 51 किलो</p>
+    <p><strong>प्रकार:</strong> शक्कर, आटा</p>
+  </div>
+
+  <div class="donor-card">
+    <div class="donor-photo">📸</div>
+    <h3>श्री दीपक जी जमदार</h3>
+    <p><strong>दान:</strong> 71 किलो</p>
+    <p><strong>प्रकार:</strong> आटा</p>
+  </div>
+</div>
+
+
+  <!-- Repeat for each donor -->
+</div>
 
 <div id="noResults" class="no-results" style="display:none;">
   कोई परिणाम नहीं मिला
@@ -229,74 +479,34 @@
 <script>
   const searchInput = document.getElementById("searchName");
   const filterType = document.getElementById("filterType");
-  const table = document.getElementById("donationTable");
+  const donorCards = document.querySelectorAll(".donor-card");
   const noResults = document.getElementById("noResults");
 
-  function filterTable() {
+  function filterDonors() {
     const searchValue = searchInput.value.toLowerCase();
-    const typeValue = filterType.value;
+    const typeValue = filterType.value.toLowerCase();
     let visibleCount = 0;
 
-    Array.from(table.tBodies[0].rows).forEach(row => {
-      const name = row.cells[1].textContent.toLowerCase();
-      const type = row.cells[3].textContent;
+    donorCards.forEach(card => {
+      const name = card.querySelector("h3").textContent.toLowerCase();
+      const type = card.querySelector("p:nth-of-type(2)").textContent.toLowerCase();
 
       const matchName = name.includes(searchValue);
       const matchType = typeValue === "" || type.includes(typeValue);
 
       if (matchName && matchType) {
-        row.style.display = "";
+        card.style.display = "block";
         visibleCount++;
       } else {
-        row.style.display = "none";
+        card.style.display = "none";
       }
     });
 
     noResults.style.display = visibleCount === 0 ? "block" : "none";
   }
 
-  searchInput.addEventListener("keyup", filterTable);
-  filterType.addEventListener("change", filterTable);
-
-  // -------- Sorting Functionality --------
-  const headers = table.querySelectorAll("th");
-  let sortDirection = Array(headers.length).fill(true); // true = ascending
-
-  headers.forEach((header, index) => {
-    header.style.cursor = "pointer";
-    header.addEventListener("click", () => {
-      const tbody = table.tBodies[0];
-      const rows = Array.from(tbody.rows);
-      const isNumberColumn = index === 0; // क्रम संख्या
-      const isAmountColumn = index === 2; // दान राशि/मात्रा (optional numeric sort)
-
-      rows.sort((a, b) => {
-        let aText = a.cells[index].textContent.trim();
-        let bText = b.cells[index].textContent.trim();
-
-        // Convert numeric columns
-        if (isNumberColumn) {
-          aText = parseInt(aText) || 0;
-          bText = parseInt(bText) || 0;
-        } else if (isAmountColumn) {
-          // Extract numbers from strings like "125 किलो" or "₹3100"
-          aText = parseInt(aText.replace(/[^\d]/g, "")) || 0;
-          bText = parseInt(bText.replace(/[^\d]/g, "")) || 0;
-        }
-
-        if (aText > bText) return sortDirection[index] ? 1 : -1;
-        if (aText < bText) return sortDirection[index] ? -1 : 1;
-        return 0;
-      });
-
-      // Re-add rows in sorted order
-      rows.forEach(row => tbody.appendChild(row));
-
-      // Toggle sort direction for next click
-      sortDirection[index] = !sortDirection[index];
-    });
-  });
+  searchInput.addEventListener("keyup", filterDonors);
+  filterType.addEventListener("change", filterDonors);
 </script>
-
 </body>
 </html>
