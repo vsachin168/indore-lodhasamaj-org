@@ -1,435 +1,407 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>लोधा समाज नवरात्र उत्सव दानदाता (2025)</title>
-  <link rel="icon" type="image/png" href="https://indore.lodhasamaj.org/wp-content/uploads/2023/10/Lodha-Samaj-Logo-1-300x260.png">
+  <link rel="icon" type="image/png" href="https://indore.lodhasamaj.org/wp-content/uploads/2023/10/Lodha-Samaj-Logo-1-300x260.png" />
+  <style>
+    body {
+      font-family: "Noto Sans Devanagari", sans-serif;
+      margin: 20px;
+      background: #fff5f5;
+      color: #333;
+    }
+    /* Header with logos */
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 30px;
+      padding: 10px 20px;
+    }
+    .header-container h1 {
+      flex: 1;
+      text-align: center;
+      font-size: 48px;
+      color: #c0392b;
+      margin: 0 10px;
+    }
+    .logo {
+      max-height: 180px;
+      width: auto;
+    }
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      .header-container h1 {
+        font-size: 20px;
+        margin: 0 5px;
+      }
+      .logo {
+        max-height: 50px;
+      }
+    }
+    /* Announcement with fade-in */
+    .announcement {
+      background: linear-gradient(135deg, #fff5f5, #ffeaea);
+      border: 3px solid #c0392b;
+      border-radius: 15px;
+      padding: 30px 20px;
+      margin: 30px auto;
+      text-align: center;
+      max-width: 900px;
+      font-family: "Noto Sans Devanagari", sans-serif;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1.5s ease, transform 1.5s ease;
+    }
+    .announcement.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .announcement h1 {
+      color: #c0392b;
+      font-size: 34px;
+      margin-bottom: 18px;
+      font-weight: 700;
+      text-shadow: 1px 1px 2px #fff;
+    }
+    .announcement p {
+      font-size: 20px;
+      margin: 10px 0;
+      color: #2c3e50;
+      line-height: 1.5;
+    }
+    .announcement p.important {
+      font-size: 22px;
+      margin: 15px 0;
+      color: #c0392b;
+      font-weight: 700;
+      line-height: 1.6;
+    }
+    .announcement p.note {
+      font-size: 19px;
+      max-width: 750px;
+      margin-left: auto;
+      margin-right: auto;
+      font-style: normal;
+      font-weight: 500;
+      color: #2c3e50;
+      line-height: 1.6;
+    }
+    .announcement h2 {
+      color: #e63946;
+      font-size: 26px;
+      margin-top: 20px;
+      font-weight: 700;
+    }
+
+    /* Filters */
+    .filters {
+      margin: 20px auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      align-items: center;
+    }
+    .filters input,
+    .filters select {
+      padding: 10px 14px;
+      font-size: 14px;
+      border: 1.5px solid #e74c3c;
+      border-radius: 8px;
+      outline: none;
+      transition: all 0.3s ease;
+      min-width: 210px;
+    }
+    .filters input:focus,
+    .filters select:focus {
+      border-color: #922b21;
+      box-shadow: 0 0 10px rgba(146, 43, 33, 0.5);
+    }
+    .filters input:hover,
+    .filters select:hover {
+      border-color: #c0392b;
+    }
+    @media (max-width: 410px) {
+      .filters {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .filters input,
+      .filters select {
+        width: 80%;
+        font-size: 14px;
+        min-width: unset;
+      }
+    }
+    /* Donor grid */
+    .donor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      max-width: 100%;
+    }
+    @media (min-width: 1200px) {
+      .donor-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    /* Donor card */
+    .donor-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      outline: none;
+    }
+    /* Hover & focus effect */
+    .donor-card:hover,
+    .donor-card:focus {
+      transform: scale(1.2);
+      box-shadow: 0 12px 36px rgba(192, 57, 43, 0.4);
+      border: 2px solid #c0392b;
+    }
+    .donor-card h3 {
+      font-size: 19px;
+      margin: 10px 0;
+      color: #c0392b;
+    }
+    .donor-card p {
+      margin: 5px 0;
+      font-size: 16px;
+      color: #333;
+    }
+    .donor-card p strong {
+      color: #2980b9;
+    }
+    .donor-photo {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 10px;
+    }
+    .donor-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    /* No results */
+    .no-results {
+      text-align: center;
+      padding: 20px;
+      font-style: italic;
+      color: #c0392b;
+    }
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+      }
+      .header-container h1 {
+        font-size: 18px;
+        margin: 0 5px;
+      }
+      .logo {
+        max-height: 50px;
+        width: auto;
+      }
+    }
+    /* Modal */
+    .donor-modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.95);
+      justify-content: center;
+      align-items: center;
+      overflow-y: auto;
+    }
+    .donor-modal-content {
+      position: relative;
+      text-align: center;
+      width: 90%;
+      max-width: 500px;
+      min-width: 300px;
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      color: #333;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      border: 3px solid #c0392b;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+    .donor-modal-photo img {
+      max-width: 400px;
+      width: 80%;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 15px;
+    }
+    .donor-modal-name {
+      font-size: 28px;
+      color: #c0392b;
+      margin-bottom: 10px;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+    .donor-modal-donation,
+    .donor-modal-type {
+      font-size: 28px;
+      margin: 5px 0;
+    }
+    .donor-close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 35px;
+      cursor: pointer;
+      color: #c0392b;
+    }
+    .donor-controls {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 15px;
+    }
+    .donor-controls button {
+      font-size: 30px;
+      padding: 10px 15px;
+      background: #c0392b;
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .donor-controls button:hover {
+      background: #e74c3c;
+    }
+    .donor-modal-header {
+      width: 100%;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    .donor-counter {
+      font-size: 18px;
+      color: #fff;
+      display: block;
+      margin-bottom: 5px;
+    }
+    .donor-progress-container {
+      width: 100%;
+      height: 5px;
+      background-color: rgba(255, 255, 255, 0.3);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .donor-progress-bar {
+      width: 0%;
+      height: 100%;
+      background-color: #e74c3c;
+      transition: width 0.3s linear;
+    }
+    @media (max-width: 600px) {
+      .donor-modal-content {
+        width: 90%;
+        max-width: 400px;
+        padding: 15px;
+        margin: 40px auto;
+      }
+      .donor-modal-photo img {
+        max-width: 80%;
+      }
+      .donor-modal-name {
+        font-size: 20px;
+      }
+      .donor-modal-donation,
+      .donor-modal-type {
+        font-size: 18px;
+      }
+      .donor-controls button {
+        font-size: 22px;
+        padding: 6px 10px;
+      }
+    }
+    /* Desktop footer layout (default) */
+    #footer-nav .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+    /* Mobile fix */
+    @media (max-width: 768px) {
+      #footer-nav .container {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+      }
+      #footer-nav .footer-left,
+      #footer-nav .footer-socials,
+      #footer-nav .footer-site-info {
+        text-align: center !important;
+        justify-content: center !important;
+      }
+      #footer-nav .footer-site-info img {
+        height: 25px;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="header-container">
     <a href="https://indore.lodhasamaj.org/">
-    <img src="/wp-content/uploads/2023/10/Lodha-Samaj-Logo-1-300x260.png" alt="Lodha Samaj Logo" class="logo left-logo">
+      <img src="/wp-content/uploads/2023/10/Lodha-Samaj-Logo-1-300x260.png" alt="Lodha Samaj Logo" class="logo left-logo" />
     </a>
-    <div class="announcement" style="background:linear-gradient(135deg,#fff5f5,#ffeaea); border:3px solid #c0392b; border-radius:15px; padding:30px 20px; margin:30px auto; text-align:center; max-width:900px; font-family:'Noto Sans Devanagari', sans-serif; box-shadow:0 6px 18px rgba(0,0,0,0.12);">
-  
-  <h1 style="color:#c0392b; font-size:34px; margin-bottom:18px; font-weight:700; text-shadow:1px 1px 2px #fff;">
-    🌸✨ लोधा समाज नवरात्र उत्सव – 2025 ✨🌸
-  </h1>
-
-  <p style="font-size:20px; margin:10px 0; color:#2c3e50;">
-    मां दुर्गा की असीम कृपा एवं आप सभी समाजबंधुओं के स्नेह-सहयोग से
-  </p>
-  
-  <p style="font-size:20px; margin:10px 0; color:#2c3e50;">
-    इस वर्ष भी नवरात्र महोत्सव के पावन पर्व पर आयोजित होगा –
-  </p>
-
-  <p style="font-size:22px; margin:15px 0; color:#c0392b; font-weight:700; line-height:1.6;">
-    ✦ 45वां विशाल भंडारा <br>
-    ✦ 22वां नगर कन्या पूजन
-  </p>
-
-  <p style="font-size:19px; margin:15px 0; color:#2c3e50; max-width:750px; margin-left:auto; margin-right:auto; line-height:1.6;">
-    यह दिव्य और भव्य आयोजन सदैव हमारी समाज एकता व सहयोग की परंपरा का प्रतीक रहा है।  
-    आप सभी श्रद्धालुजन के अथक सहयोग और आशीर्वाद से ही यह मंगल अवसर संभव हो पाता है।
-  </p>
-
-  <h2 style="color:#e63946; font-size:26px; margin-top:20px; font-weight:700;">
-    🙏✨ 2025 सहयोग कर्ताओं की पावन सूची ✨🙏
-  </h2>
-</div>
+    <div
+      class="announcement"
+      style="font-family:'Noto Sans Devanagari', sans-serif;"
+    >
+      <h1>
+        🌸✨ लोधा समाज नवरात्र उत्सव – 2025 ✨🌸
+      </h1>
+      <p>मां दुर्गा की असीम कृपा एवं आप सभी समाजबंधुओं के स्नेह-सहयोग से</p>
+      <p>इस वर्ष भी नवरात्र महोत्सव के पावन पर्व का भव्य आयोजन होने जा रहा है।</p>
+      <p class="important">
+        ✦ 45वां विशाल भंडारा<br />
+        ✦ 22वां नगर कन्या पूजन
+      </p>
+      <p class="note">
+        यह दिव्य और भव्य आयोजन सदैव हमारी समाज एकता व सहयोग की परंपरा का प्रतीक रहा है।<br />
+        आप सभी श्रद्धालुजन के अथक सहयोग और आशीर्वाद से ही यह मंगल अवसर संभव हो पाता है।
+      </p>
+      <h2>🙏✨ 2025 सहयोग कर्ताओं की पावन सूची ✨🙏</h2>
+    </div>
     <a href="https://indore.lodhasamaj.org/">
-    <img src="/wp-content/uploads/2023/10/maa-durga-face-transparent-background-png-image_17365184.webp" alt="New Logo" class="logo right-logo">
+      <img
+        src="/wp-content/uploads/2023/10/maa-durga-face-transparent-background-png-image_17365184.webp"
+        alt="New Logo"
+        class="logo right-logo"
+      />
     </a>
-
-    <style>
-
-      body {
-        font-family: "Noto Sans Devanagari", sans-serif;
-        margin: 20px;
-        background: #fff5f5;
-        color: #333;
-      }
-
-      /* Header with logos */
-      .header-container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 30px;
-        padding: 10px 20px;
-      }
-
-      .header-container h1 {
-        flex: 1;
-        text-align: center;
-        font-size: 48px;
-        color: #c0392b;
-        margin: 0 10px;
-      }
-
-      .logo {
-        max-height: 180px;
-        width: auto;
-      }
-
-      @media (max-width: 768px) {
-        .header-container {
-          flex-direction: row;   /* keep in one line */
-          justify-content: space-between;
-        }
-
-        .header-container h1 {
-          font-size: 20px;  /* smaller font for mobile */
-          margin: 0 5px;
-        }
-
-        .logo {
-          max-height: 50px; /* shrink logos for mobile */
-        }
-      }
-
-      .donor-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 20px;
-        padding: 20px;
-        max-width: 100%;
-      }
-
-
-      @media (min-width: 1200px) {
-        .donor-grid {
-          grid-template-columns: repeat(4, 1fr);
-        }
-      }
-
-      .donor-card h3 {
-        font-size: 19px;
-        margin: 10px 0;
-        color: #c0392b; /* red for donor name */
-      }
-
-      .donor-card p {
-        margin: 5px 0;
-        font-size: 16px;
-        color: #333; /* default text color */
-      }
-
-      /* Specific colors for donation amount and type */
-      .donor-card p strong {
-        color: #2980b9; /* blue for labels like "दान:" or "प्रकार:" */
-      }
-
-      .donor-card p span.amount {
-        font-size: 16px;
-        color: #27ae60; /* green for donation amount */
-      }
-
-      .donor-card p span.type {
-        font-size: 16px; 
-        color: #8e44ad; /* purple for donation type */
-      }
-
-      .donor-card {
-        background: #fff;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        padding: 20px;
-        text-align: center;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        cursor: pointer;
-      }
-
-      /* Zoom effect on hover/touch */
-      .donor-card:hover,
-      .donor-card:active {
-        transform: scale(1.20);
-        box-shadow: 0 12px 24px rgba(0,0,0,0.2);
-      }
-
-      .donor-photo {
-        width: 150px;      /* fixed width */
-        height: 150px;     /* fixed height */
-        border-radius: 50%; /* make it circular */
-        overflow: hidden;   /* ensures image stays within circle */
-        margin: 0 auto 10px; /* center the photo with bottom spacing */
-      }
-
-      .donor-photo img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover; /* ensures image fills the container without distortion */
-      }
-
-      /* Second header <h2> styling */
-      h1 {
-        text-align: center;
-        font-size: 40px; /* smaller than h1 */
-        color: #e74c3c; /* same red theme */
-        margin-bottom: 25px;
-        font-weight: 500;
-      }
-      h2 {
-        text-align: center;
-        font-size: 20px; /* smaller than h1 */
-        color: #e74c3c; /* same red theme */
-        margin-bottom: 25px;
-        font-weight: 500;
-      }
-
-      /* Filters */
-      /* Filters container */
-      .filters {
-        margin: 20px auto;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        justify-content: center;
-        align-items: center;
-      }
-
-      /* Search input and dropdown styling */
-      .filters input,
-      .filters select {
-        padding: 10px 14px;
-        font-size: 14px;
-        border: 1.5px solid #e74c3c;
-        border-radius: 8px;
-        outline: none;
-        transition: all 0.3s ease;
-        min-width: 210px; /* ensures a decent size */
-      }
-
-      /* Focus effect */
-      .filters input:focus,
-      .filters select:focus {
-        border-color: #c0392b;
-        box-shadow: 0 0 8px rgba(192, 57, 43, 0.3);
-      }
-
-      /* Hover effect */
-      .filters input:hover,
-      .filters select:hover {
-        border-color: #c0392b;
-      }
-
-      /* Mobile adjustments */
-      @media (max-width: 410px) {
-        .filters {
-          flex-direction: column;
-          gap: 10px;
-        }
-
-        .filters input,
-        .filters select {
-          width: 80%;
-          font-size: 14px;
-          min-width: unset;
-        }
-      }
-
-      .no-results {
-        text-align: center;
-        padding: 20px;
-        font-style: italic;
-        color: #c0392b;
-      }
-
-      @media (max-width: 768px) {
-          .header-container {
-              flex-direction: row;       /* keep all inline */
-              justify-content: space-between;
-              align-items: center;
-              text-align: center;
-          }
-
-          .header-container h1 {
-              font-size: 18px;           /* smaller font for mobile */
-              margin: 0 5px;
-          }
-
-          .logo {
-              max-height: 50px;          /* shrink logos to fit */
-              width: auto;
-          }
-      }
-    </style>
-    <style>
-
-      .donor-modal {
-        display: none;
-        position: fixed;
-        z-index: 9999;
-        top: 0; left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(255,255,255,0.95); /* white-ish background */
-        justify-content: center;
-        align-items: center;
-        overflow-y: auto;
-      }
-
-      .donor-modal-content {
-        position: relative;
-        text-align: center;
-        width: 90%;
-        max-width: 500px;       /* fixed max width */
-        min-width: 300px;       /* optional minimum width */
-        background: #fff;
-        border-radius: 12px;
-        padding: 20px;
-        color: #333;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-        border: 3px solid #c0392b;
-        word-wrap: break-word;   /* allows text to wrap */
-        overflow-wrap: break-word;
-      }
-      .donor-modal-photo img {
-        max-width: 400px;  /* increase image size */
-        width: 80%;
-        height: auto;
-        border-radius: 12px;
-        margin-bottom: 15px;
-      }
-
-      .donor-modal-name {
-        font-size: 28px;        /* adjust for readability */
-        color: #c0392b;
-        margin-bottom: 10px;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-      }
-
-      .donor-modal-donation, .donor-modal-type {
-        font-size: 28px;
-        margin: 5px 0;
-      }
-
-      .donor-close {
-        position: absolute;
-        top: 15px; right: 20px;
-        font-size: 35px;
-        cursor: pointer;
-        color: #c0392b;   /* red to match theme */
-      }
-
-
-      .donor-controls {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        margin-top: 15px;
-      }
-
-
-      .donor-controls button {
-        font-size: 30px;
-        padding: 10px 15px;
-        background: #c0392b;  /* red button */
-        border: none;
-        border-radius: 8px;
-        color: #fff;           /* white text/icon */
-        cursor: pointer;
-        transition: 0.3s;
-      }
-
-      .donor-controls button:hover {
-        background: #e74c3c;   /* lighter red on hover */
-      }
-
-      .donor-modal-header {
-        width: 100%;
-        margin-bottom: 15px;
-        text-align: center;
-      }
-
-      .donor-counter {
-        font-size: 18px;
-        color: #fff;
-        display: block;
-        margin-bottom: 5px;
-      }
-
-      .donor-progress-container {
-        width: 100%;
-        height: 5px;
-        background-color: rgba(255,255,255,0.3);
-        border-radius: 3px;
-        overflow: hidden;
-      }
-
-      .donor-progress-bar {
-        width: 0%;
-        height: 100%;
-        background-color: #e74c3c; /* red */
-        transition: width 0.3s linear;
-      }
-
-      /* Mobile adjustments */
-      @media (max-width: 600px) {
-        .donor-modal-content {
-          width: 90%;
-          max-width: 400px;  /* smaller max width */
-          padding: 15px;
-          margin: 40px auto; /* space for close button */
-        }
-
-        .donor-modal-photo img {
-          max-width: 80%;
-        }
-
-        .donor-modal-name {
-          font-size: 20px;
-        }
-
-        .donor-modal-donation,
-        .donor-modal-type {
-          font-size: 18px;
-        }
-
-        .donor-controls button {
-          font-size: 22px;
-          padding: 6px 10px;
-        }
-      }
-
-      /* Desktop footer layout (default) */
-      #footer-nav .container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      /* Mobile fix */
-      @media (max-width: 768px) {
-        #footer-nav .container {
-          flex-direction: column;     /* stack items vertically */
-          text-align: center;         /* center all content */
-          gap: 15px;                  /* spacing between sections */
-        }
-
-        #footer-nav .footer-left,
-        #footer-nav .footer-socials,
-        #footer-nav .footer-site-info {
-          text-align: center !important;
-          justify-content: center !important;
-        }
-
-        #footer-nav .footer-site-info img {
-          height: 25px;   /* slightly smaller logo for mobile */
-        }
-      }
-
-    </style>
-
   </header>
 
-  <h1> नवरात्र उत्सव दानदाता सूची (2025)</h1>
   <div class="filters">
-    <input type="text" id="searchName" placeholder="दानदाता खोजें...">
+    <input type="text" id="searchName" placeholder="दानदाता खोजें..." />
     <select id="filterType">
       <option value="">दान प्रकार चुनें</option>
       <option value="शक्कर">शक्कर</option>
@@ -442,6 +414,11 @@
       <option value="घी">घी</option>
       <option value="गैस">गैस</option>
       <option value="अन्य">अन्य</option>
+    </select>
+    <select id="sortBy">
+      <option value="">सॉर्ट बाय</option>
+      <option value="name">नाम (अक्षरानुक्रम)</option>
+      <option value="type">दान प्रकार के अनुसार</option>
     </select>
   </div>
 
@@ -843,196 +820,300 @@
   </div>
 
     
-</div>
+  </div>
 
-</div>
+  <div id="noResults" class="no-results" style="display: none">
+    कोई परिणाम नहीं मिला
+  </div>
 
-<div id="noResults" class="no-results" style="display:none;">
-  कोई परिणाम नहीं मिला
-</div>
+  <!-- Slidebar Modal -->
+  <div id="donorModal" class="donor-modal">
+    <span class="donor-close">&times;</span>
+    <div class="donor-modal-content">
+      <div class="donor-modal-header">
+        <span class="donor-counter"></span>
+        <div class="donor-progress-container">
+          <div class="donor-progress-bar"></div>
+        </div>
+      </div>
 
-<!-- Slidebar Modal -->
-<div id="donorModal" class="donor-modal">
-  <span class="donor-close">&times;</span>
-  <div class="donor-modal-content">
-    <div class="donor-modal-header">
-      <span class="donor-counter"></span>
-      <div class="donor-progress-container">
-        <div class="donor-progress-bar"></div>
+      <div class="donor-modal-photo"></div>
+      <h3 class="donor-modal-name"></h3>
+      <p class="donor-modal-donation"></p>
+      <p class="donor-modal-type"></p>
+
+      <div class="donor-controls">
+        <button id="prevBtn">❮</button>
+        <button id="playBtn">►</button>
+        <button id="nextBtn">❯</button>
       </div>
     </div>
-
-    <div class="donor-modal-photo"></div>
-    <h3 class="donor-modal-name"></h3>
-    <p class="donor-modal-donation"></p>
-    <p class="donor-modal-type"></p>
-
-    <div class="donor-controls">
-      <button id="prevBtn">&#10094;</button>
-      <button id="playBtn">&#9658;</button>
-      <button id="nextBtn">&#10095;</button>
-    </div>
   </div>
-</div>
 
-<footer id="footer-nav" class="site-footer" style="background: linear-gradient(90deg, #000000, #c0392b); padding: 30px 0; color: #fff;">
-  <div class="container" style="max-width:1200px; margin:0 auto; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center;">
-    
-    <!-- Footer Left: Text -->
-    <div class="footer-left" style="font-family:'Noto Sans Devanagari', sans-serif; font-size:16px;">
-      © 2025 लोधा समाज. सभी अधिकार सुरक्षित।
+  <footer
+    id="footer-nav"
+    class="site-footer"
+    style="background: linear-gradient(90deg, #000000, #c0392b); padding: 30px 0; color: #fff"
+  >
+    <div
+      class="container"
+      style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center"
+    >
+      <div
+        class="footer-left"
+        style="font-family: 'Noto Sans Devanagari', sans-serif; font-size: 16px"
+      >
+        © 2025 लोधा समाज. सभी अधिकार सुरक्षित।
+      </div>
+
+      <div
+        class="footer-socials"
+        style="display: flex; align-items: center"
+      >
+        <a
+          href="https://www.facebook.com/profile.php?id=61552495104262"
+          target="_blank"
+          title="Facebook"
+          class="socials-item"
+          style="margin: 0 5px; color: #fff; font-size: 20px;"
+          ><i class="fab fa-facebook-f"></i
+        ></a>
+        <a
+          href="https://twitter.com/LodhaS11845"
+          target="_blank"
+          title="Twitter"
+          class="socials-item"
+          style="margin: 0 5px; color: #fff; font-size: 20px;"
+          ><i class="fab fa-twitter"></i
+        ></a>
+        <a
+          href="https://www.instagram.com/lodha.samaj/"
+          target="_blank"
+          title="Instagram"
+          class="socials-item"
+          style="margin: 0 5px; color: #fff; font-size: 20px;"
+          ><i class="fab fa-instagram"></i
+        ></a>
+        <a
+          href="https://www.youtube.com/@lodhasamajindore2762"
+          target="_blank"
+          title="YouTube"
+          class="socials-item"
+          style="margin: 0 5px; color: #fff; font-size: 20px;"
+          ><i class="fab fa-youtube"></i
+        ></a>
+        <a
+          href="https://web.whatsapp.com/send?phone=919826324370"
+          target="_blank"
+          title="WhatsApp"
+          class="socials-item"
+          style="margin: 0 5px; color: #fff; font-size: 20px;"
+          ><i class="fab fa-whatsapp"></i
+        ></a>
+      </div>
+
+      <div
+        class="footer-site-info"
+        style="
+          font-family: 'Noto Sans Devanagari', sans-serif;
+          font-size: 16px;
+          text-align: right;
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          gap: 8px;
+        "
+      >
+        <span>Powered by</span>
+        <a href="https://www.armourinfosec.com/" target="_blank">
+          <img
+            src="https://www.armourinfosec.io/wp-content/uploads/2021/05/armour-infosec.png"
+            alt="Armour Infosec"
+            style="height: 30px; width: auto"
+          />
+        </a>
+      </div>
     </div>
-    
-    <!-- Footer Right: Social Icons -->
-    <div class="footer-socials" style="display:flex; align-items:center;">
-      <a href="https://www.facebook.com/profile.php?id=61552495104262" target="_blank" title="Facebook" class="socials-item" style="margin:0 5px; color:#fff; font-size:20px;"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://twitter.com/LodhaS11845" target="_blank" title="Twitter" class="socials-item" style="margin:0 5px; color:#fff; font-size:20px;"><i class="fab fa-twitter"></i></a>
-      <a href="https://www.instagram.com/lodha.samaj/" target="_blank" title="Instagram" class="socials-item" style="margin:0 5px; color:#fff; font-size:20px;"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.youtube.com/@lodhasamajindore2762" target="_blank" title="YouTube" class="socials-item" style="margin:0 5px; color:#fff; font-size:20px;"><i class="fab fa-youtube"></i></a>
-      <a href="https://web.whatsapp.com/send?phone=919826324370" target="_blank" title="WhatsApp" class="socials-item" style="margin:0 5px; color:#fff; font-size:20px;"><i class="fab fa-whatsapp"></i></a>
-    </div>
+  </footer>
 
-    <!-- Footer Right: Armour Infosec Logo -->
-    <div class="footer-site-info" style="font-family:'Noto Sans Devanagari', sans-serif; font-size:16px; text-align:right; display:flex; align-items:center; justify-content:flex-end; gap:8px;">
-      <span>Powered by</span>
-      <a href="https://www.armourinfosec.com/" target="_blank">
-        <img src="https://www.armourinfosec.io/wp-content/uploads/2021/05/armour-infosec.png" 
-             alt="Armour Infosec" 
-             style="height:30px; width:auto;">
-      </a>
-    </div>
-</footer>
-
-
-
-<script>
-  const searchInput = document.getElementById("searchName");
-  const filterType = document.getElementById("filterType");
-  const donorCards = document.querySelectorAll(".donor-card");
-  const noResults = document.getElementById("noResults");
-
-  function filterDonors() {
-    const searchValue = searchInput.value.toLowerCase();
-    const typeValue = filterType.value.toLowerCase();
-    let visibleCount = 0;
-
-    donorCards.forEach(card => {
-      const name = card.querySelector("h3").textContent.toLowerCase();
-      const type = card.querySelector("p:nth-of-type(2)").textContent.toLowerCase();
-
-      const matchName = name.includes(searchValue);
-      const matchType = typeValue === "" || type.includes(typeValue);
-
-      if (matchName && matchType) {
-        card.style.display = "block";
-        visibleCount++;
-      } else {
-        card.style.display = "none";
+  <script>
+    // Fade in announcement
+    window.addEventListener("DOMContentLoaded", () => {
+      const announcement = document.querySelector(".announcement");
+      if (announcement) {
+        setTimeout(() => {
+          announcement.classList.add("visible");
+        }, 100);
       }
     });
 
-    noResults.style.display = visibleCount === 0 ? "block" : "none";
-  }
+    const searchInput = document.getElementById("searchName");
+    const filterType = document.getElementById("filterType");
+    const sortBy = document.getElementById("sortBy");
+    const donorGrid = document.querySelector(".donor-grid");
+    const donorCards = document.querySelectorAll(".donor-card");
+    const noResults = document.getElementById("noResults");
 
-  searchInput.addEventListener("keyup", filterDonors);
-  filterType.addEventListener("change", filterDonors);
-</script>
+    function filterDonors() {
+      const searchValue = searchInput.value.toLowerCase();
+      const typeValue = filterType.value.toLowerCase();
+      let visibleCount = 0;
 
+      donorCards.forEach((card) => {
+        const name = card.querySelector("h3").textContent.toLowerCase();
+        const type = card
+          .querySelector("p:nth-of-type(2)")
+          .textContent.toLowerCase();
 
-<script>
-let currentIndex = 0;
-let autoPlay = false;
-let autoPlayInterval;
+        const matchName = name.includes(searchValue);
+        const matchType = typeValue === "" || type.includes(typeValue);
 
-const modal = document.getElementById("donorModal");
-const donorCounter = modal.querySelector(".donor-counter");
-const progressBar = modal.querySelector(".donor-progress-bar");
-const modalPhoto = modal.querySelector(".donor-modal-photo");
-const modalName = modal.querySelector(".donor-modal-name");
-const modalDonation = modal.querySelector(".donor-modal-donation");
-const modalType = modal.querySelector(".donor-modal-type");
+        if (matchName && matchType) {
+          card.style.display = "block";
+          visibleCount++;
+        } else {
+          card.style.display = "none";
+        }
+      });
 
-const donorCardsArray = Array.from(document.querySelectorAll(".donor-card"));
+      noResults.style.display = visibleCount === 0 ? "block" : "none";
+    }
 
-const closeBtn = modal.querySelector(".donor-close");
-const prevBtn = modal.querySelector("#prevBtn");
-const nextBtn = modal.querySelector("#nextBtn");
-const playBtn = modal.querySelector("#playBtn");
+    function sortDonorCards(criteria) {
+      let cardsArray = Array.from(donorGrid.children);
 
-function showCard(index) {
-  const card = donorCardsArray[index];
-  const photoHTML = card.querySelector(".donor-photo").innerHTML;
-  modalPhoto.innerHTML = photoHTML;
-  modalName.textContent = card.querySelector("h3").textContent;
-  modalDonation.innerHTML = card.querySelector("p:nth-of-type(1)").innerHTML;
-  modalType.innerHTML = card.querySelector("p:nth-of-type(2)").innerHTML;
+      cardsArray.sort((a, b) => {
+        if (criteria === "name") {
+          let nameA = a.querySelector("h3").textContent.trim();
+          let nameB = b.querySelector("h3").textContent.trim();
+          return nameA.localeCompare(nameB, "hi");
+        } else if (criteria === "type") {
+          let typeA = a
+            .querySelector("p:nth-of-type(2)")
+            .textContent.replace("प्रकार:", "")
+            .trim();
+          let typeB = b
+            .querySelector("p:nth-of-type(2)")
+            .textContent.replace("प्रकार:", "")
+            .trim();
+          return typeA.localeCompare(typeB, "hi");
+        }
+        return 0;
+      });
 
-  // Update counter
-  donorCounter.textContent = `${index + 1} of ${donorCardsArray.length}`;
+      cardsArray.forEach((card) => donorGrid.appendChild(card));
+    }
 
-  // Reset progress bar
-  progressBar.style.transition = "none";
-  progressBar.style.width = "0%";
-  if(autoPlay) {
-    setTimeout(() => {
-      progressBar.style.transition = `width 10s linear`; // match autoplay interval
-      progressBar.style.width = "100%";
-    }, 50);
-  }
-}
+    searchInput.addEventListener("keyup", () => {
+      filterDonors();
+      if (sortBy.value) {
+        sortDonorCards(sortBy.value);
+      }
+    });
 
+    filterType.addEventListener("change", () => {
+      filterDonors();
+      if (sortBy.value) {
+        sortDonorCards(sortBy.value);
+      }
+    });
 
-function openModal(index) {
-  currentIndex = index;
-  showCard(currentIndex);
-  modal.style.display = "flex";
-}
+    sortBy.addEventListener("change", () => {
+      const criteria = sortBy.value;
+      if (criteria) {
+        sortDonorCards(criteria);
+      }
+    });
 
-function closeModal() {
-  modal.style.display = "none";
-  stopAutoPlay();
-}
+    // Modal functionality remains the same
+    let currentIndex = 0;
+    let autoPlay = false;
+    let autoPlayInterval;
 
-function prevCard() {
-  currentIndex = (currentIndex - 1 + donorCardsArray.length) % donorCardsArray.length;
-  showCard(currentIndex);
-}
+    const modal = document.getElementById("donorModal");
+    const donorCounter = modal.querySelector(".donor-counter");
+    const progressBar = modal.querySelector(".donor-progress-bar");
+    const modalPhoto = modal.querySelector(".donor-modal-photo");
+    const modalName = modal.querySelector(".donor-modal-name");
+    const modalDonation = modal.querySelector(".donor-modal-donation");
+    const modalType = modal.querySelector(".donor-modal-type");
 
-function nextCard() {
-  currentIndex = (currentIndex + 1) % donorCardsArray.length;
-  showCard(currentIndex);
-}
+    const donorCardsArray = Array.from(document.querySelectorAll(".donor-card"));
 
-function startAutoPlay() {
-  autoPlay = true;
-  playBtn.textContent = "❚❚"; // pause icon
-  showCard(currentIndex); // start progress
-  autoPlayInterval = setInterval(nextCard, 10000);
-}
+    const closeBtn = modal.querySelector(".donor-close");
+    const prevBtn = modal.querySelector("#prevBtn");
+    const nextBtn = modal.querySelector("#nextBtn");
+    const playBtn = modal.querySelector("#playBtn");
 
-function stopAutoPlay() {
-  autoPlay = false;
-  playBtn.textContent = "▶"; // play icon
-  clearInterval(autoPlayInterval);
-  progressBar.style.transition = "none";
-  progressBar.style.width = "0%";
-}
+    function showCard(index) {
+      const card = donorCardsArray[index];
+      const photoHTML = card.querySelector(".donor-photo").innerHTML;
+      modalPhoto.innerHTML = photoHTML;
+      modalName.textContent = card.querySelector("h3").textContent;
+      modalDonation.innerHTML = card.querySelector("p:nth-of-type(1)").innerHTML;
+      modalType.innerHTML = card.querySelector("p:nth-of-type(2)").innerHTML;
 
-// Card click
-donorCardsArray.forEach((card, i) => {
-  card.addEventListener("click", () => openModal(i));
-});
+      donorCounter.textContent = `${index + 1} of ${donorCardsArray.length}`;
+      progressBar.style.transition = "none";
+      progressBar.style.width = "0%";
+      if (autoPlay) {
+        setTimeout(() => {
+          progressBar.style.transition = `width 10s linear`;
+          progressBar.style.width = "100%";
+        }, 50);
+      }
+    }
 
-// Close modal
-closeBtn.addEventListener("click", closeModal);
-modal.addEventListener("click", (e) => { if(e.target === modal) closeModal(); });
+    function openModal(index) {
+      currentIndex = index;
+      showCard(currentIndex);
+      modal.style.display = "flex";
+    }
 
-// Navigation
-prevBtn.addEventListener("click", prevCard);
-nextBtn.addEventListener("click", nextCard);
-playBtn.addEventListener("click", () => autoPlay ? stopAutoPlay() : startAutoPlay());
+    function closeModal() {
+      modal.style.display = "none";
+      stopAutoPlay();
+    }
 
+    function prevCard() {
+      currentIndex = (currentIndex - 1 + donorCardsArray.length) % donorCardsArray.length;
+      showCard(currentIndex);
+    }
 
-</script>
+    function nextCard() {
+      currentIndex = (currentIndex + 1) % donorCardsArray.length;
+      showCard(currentIndex);
+    }
+
+    function startAutoPlay() {
+      autoPlay = true;
+      playBtn.textContent = "❚❚";
+      showCard(currentIndex);
+      autoPlayInterval = setInterval(nextCard, 10000);
+    }
+
+    function stopAutoPlay() {
+      autoPlay = false;
+      playBtn.textContent = "▶";
+      clearInterval(autoPlayInterval);
+      progressBar.style.transition = "none";
+      progressBar.style.width = "0%";
+    }
+
+    donorCardsArray.forEach((card, i) => {
+      card.addEventListener("click", () => openModal(i));
+    });
+
+    closeBtn.addEventListener("click", closeModal);
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    prevBtn.addEventListener("click", prevCard);
+    nextBtn.addEventListener("click", nextCard);
+    playBtn.addEventListener("click", () =>
+      autoPlay ? stopAutoPlay() : startAutoPlay()
+    );
+  </script>
 </body>
 </html>
