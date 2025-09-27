@@ -12,39 +12,19 @@
       background: #fff5f5;
       color: #333;
     }
-    /* Header with logos */
+    /* Header with logos stacked above title on mobile */
     .header-container {
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-bottom: 30px;
       padding: 10px 20px;
-    }
-    .header-container h1 {
-      flex: 1;
-      text-align: center;
-      font-size: 48px;
-      color: #c0392b;
-      margin: 0 10px;
+      flex-wrap: nowrap;
     }
     .logo {
       max-height: 180px;
       width: auto;
     }
-    @media (max-width: 768px) {
-      .header-container {
-        flex-direction: row;
-        justify-content: space-between;
-      }
-      .header-container h1 {
-        font-size: 20px;
-        margin: 0 5px;
-      }
-      .logo {
-        max-height: 50px;
-      }
-    }
-    /* Announcement with fade-in */
     .announcement {
       background: linear-gradient(135deg, #fff5f5, #ffeaea);
       border: 3px solid #c0392b;
@@ -55,13 +35,6 @@
       max-width: 900px;
       font-family: "Noto Sans Devanagari", sans-serif;
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 1.5s ease, transform 1.5s ease;
-    }
-    .announcement.visible {
-      opacity: 1;
-      transform: translateY(0);
     }
     .announcement h1 {
       color: #c0392b;
@@ -99,7 +72,6 @@
       margin-top: 20px;
       font-weight: 700;
     }
-
     /* Filters */
     .filters {
       margin: 20px auto;
@@ -206,18 +178,20 @@
     /* Responsive */
     @media (max-width: 768px) {
       .header-container {
-        flex-direction: row;
-        justify-content: space-between;
+        flex-direction: column;
+        justify-content: center;
         align-items: center;
         text-align: center;
+        gap: 10px;
       }
-      .header-container h1 {
-        font-size: 18px;
-        margin: 0 5px;
-      }
-      .logo {
-        max-height: 50px;
+      .logo.left-logo,
+      .logo.right-logo {
+        max-height: 80px;
         width: auto;
+      }
+      .announcement {
+        max-width: 100%;
+        margin: 20px 10px;
       }
     }
     /* Modal */
@@ -372,33 +346,18 @@
     <a href="https://indore.lodhasamaj.org/">
       <img src="/wp-content/uploads/2023/10/Lodha-Samaj-Logo-1-300x260.png" alt="Lodha Samaj Logo" class="logo left-logo" />
     </a>
-    <div
-      class="announcement"
-      style="font-family:'Noto Sans Devanagari', sans-serif;"
-    >
-      <h1>
-        🌸✨ लोधा समाज नवरात्र उत्सव – 2025 ✨🌸
-      </h1>
-      <p>मां दुर्गा की असीम कृपा एवं आप सभी समाजबंधुओं के स्नेह-सहयोग से</p>
-      <p>इस वर्ष भी नवरात्र महोत्सव के पावन पर्व का भव्य आयोजन होने जा रहा है।</p>
-      <p class="important">
-        ✦ 45वां विशाल भंडारा<br />
-        ✦ 22वां नगर कन्या पूजन
-      </p>
-      <p class="note">
-        यह दिव्य और भव्य आयोजन सदैव हमारी समाज एकता व सहयोग की परंपरा का प्रतीक रहा है।<br />
-        आप सभी श्रद्धालुजन के अथक सहयोग और आशीर्वाद से ही यह मंगल अवसर संभव हो पाता है।
-      </p>
-      <h2>🙏✨ 2025 सहयोग कर्ताओं की पावन सूची ✨🙏</h2>
-    </div>
     <a href="https://indore.lodhasamaj.org/">
-      <img
-        src="/wp-content/uploads/2023/10/maa-durga-face-transparent-background-png-image_17365184.webp"
-        alt="New Logo"
-        class="logo right-logo"
-      />
+      <img src="/wp-content/uploads/2023/10/maa-durga-face-transparent-background-png-image_17365184.webp" alt="New Logo" class="logo right-logo" />
     </a>
   </header>
+  <div class="announcement" style="font-family:'Noto Sans Devanagari', sans-serif;">
+    <h1>🌸✨ लोधा समाज नवरात्र उत्सव – 2025 ✨🌸</h1>
+    <p>मां दुर्गा की असीम कृपा एवं आप सभी समाजबंधुओं के स्नेह-सहयोग से</p>
+    <p>इस वर्ष भी नवरात्र महोत्सव के पावन पर्व पर आयोजित होगा –</p>
+    <p class="important">✦ 45वां विशाल भंडारा<br />✦ 22वां नगर कन्या पूजन</p>
+    <p class="note">यह दिव्य और भव्य आयोजन सदैव हमारी समाज एकता व सहयोग की परंपरा का प्रतीक रहा है।<br />आप सभी श्रद्धालुजन के अथक सहयोग और आशीर्वाद से ही यह मंगल अवसर संभव हो पाता है।</p>
+    <h2>🙏✨ 2025 सहयोग कर्ताओं की पावन सूची ✨🙏</h2>
+  </div>
 
   <div class="filters">
     <input type="text" id="searchName" placeholder="दानदाता खोजें..." />
@@ -423,11 +382,11 @@
   </div>
 
   <div class="donor-grid">
-    <div class="donor-card">
+ <div class="donor-card">
       <div class="donor-photo">
         <img src="https://cdn.pixabay.com/photo/2019/08/11/18/59/icon-4399701_1280.png" alt="दानदाता फोटो" style="width:100%; height:100%; border-radius:50%;">
       </div>
-      <h3>स्व. श्री किशोरी जी मंजे एवं </br> श्रीमती दीपा बाई जी मंजे </h3>
+      <h3>स्व. श्री किशोरी जी मंजे एवं </br> श्रीमती दीपा बाई जी मंजे के परिवार</h3>
       <p><strong>दान:</strong> 125 किलो</p>
       <p><strong>प्रकार:</strong> शक्कर</p>
     </div>
@@ -436,7 +395,7 @@
     <div class="donor-photo">
       <img src="https://cdn.pixabay.com/photo/2019/08/11/18/59/icon-4399701_1280.png" alt="दानदाता फोटो" style="width:100%; height:100%; border-radius:50%;">
     </div>
-    <h3>श्री अमित जी राजपूत एवं </br> श्री सुनील जी वर्मा (महाराष्ट्र)</h3>
+    <h3>श्री अमित जी राजपूत एवं </br> श्री सुनील जी वर्मा (महाराष्ट्र वाले)</h3>
     <p><strong>दान:</strong> 11 डब्बा</p>
     <p><strong>प्रकार:</strong> तेल</p>
   </div>
@@ -463,7 +422,7 @@
     <div class="donor-photo">
       <img src="https://cdn.pixabay.com/photo/2019/08/11/18/59/icon-4399701_1280.png" alt="दानदाता फोटो" style="width:100%; height:100%; border-radius:50%;">
     </div>
-    <h3>स्व. श्रीमती कुंदन बाई के पुत्र </br>श्री गोलू जी लोवंशी (दिल्ली)</h3>
+    <h3>स्व. श्रीमती कुंदन बाई के पुत्र </br>श्री गोलू जी लोवंशी (दिल्ली) की ओर से</h3>
     <p><strong>दान:</strong> ₹5100</p>
     <p><strong>प्रकार:</strong> नगद</p>
   </div>
@@ -589,7 +548,7 @@
     <div class="donor-photo">
       <img src="https://cdn.pixabay.com/photo/2019/08/11/18/59/icon-4399701_1280.png" alt="दानदाता फोटो" style="width:100%; height:100%; border-radius:50%;">
     </div>
-    <h3>श्री मनोहर जी वर्मा एवं </br> स्व. श्री दुलारे जी वर्मा (महाराष्ट्र)</h3>
+    <h3>श्री मनोहर जी वर्मा एवं </br> स्व. श्री दुलारे जी वर्मा (महाराष्ट्र वाले)</h3>
     <p><strong>दान:</strong> सम्पूर्ण भंडारे हेतु</p>
     <p><strong>प्रकार:</strong> केले के पत्तल</p>
   </div>
@@ -818,15 +777,10 @@
     <p><strong>दान:</strong> 111 किलो नमक</p>
     <p><strong>प्रकार:</strong> नमक</p>
   </div>
-
-    
   </div>
 
-  <div id="noResults" class="no-results" style="display: none">
-    कोई परिणाम नहीं मिला
-  </div>
+  <div id="noResults" class="no-results" style="display:none;">कोई परिणाम नहीं मिला</div>
 
-  <!-- Slidebar Modal -->
   <div id="donorModal" class="donor-modal">
     <span class="donor-close">&times;</span>
     <div class="donor-modal-content">
@@ -836,12 +790,10 @@
           <div class="donor-progress-bar"></div>
         </div>
       </div>
-
       <div class="donor-modal-photo"></div>
       <h3 class="donor-modal-name"></h3>
       <p class="donor-modal-donation"></p>
       <p class="donor-modal-type"></p>
-
       <div class="donor-controls">
         <button id="prevBtn">❮</button>
         <button id="playBtn">►</button>
@@ -850,87 +802,22 @@
     </div>
   </div>
 
-  <footer
-    id="footer-nav"
-    class="site-footer"
-    style="background: linear-gradient(90deg, #000000, #c0392b); padding: 30px 0; color: #fff"
-  >
-    <div
-      class="container"
-      style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center"
-    >
-      <div
-        class="footer-left"
-        style="font-family: 'Noto Sans Devanagari', sans-serif; font-size: 16px"
-      >
+  <footer id="footer-nav" class="site-footer" style="background: linear-gradient(90deg, #000000, #c0392b); padding: 30px 0; color: #fff;">
+    <div class="container" style="max-width:1200px; margin:0 auto; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center;">
+      <div class="footer-left" style="font-family:'Noto Sans Devanagari', sans-serif; font-size:16px;">
         © 2025 लोधा समाज. सभी अधिकार सुरक्षित।
       </div>
-
-      <div
-        class="footer-socials"
-        style="display: flex; align-items: center"
-      >
-        <a
-          href="https://www.facebook.com/profile.php?id=61552495104262"
-          target="_blank"
-          title="Facebook"
-          class="socials-item"
-          style="margin: 0 5px; color: #fff; font-size: 20px;"
-          ><i class="fab fa-facebook-f"></i
-        ></a>
-        <a
-          href="https://twitter.com/LodhaS11845"
-          target="_blank"
-          title="Twitter"
-          class="socials-item"
-          style="margin: 0 5px; color: #fff; font-size: 20px;"
-          ><i class="fab fa-twitter"></i
-        ></a>
-        <a
-          href="https://www.instagram.com/lodha.samaj/"
-          target="_blank"
-          title="Instagram"
-          class="socials-item"
-          style="margin: 0 5px; color: #fff; font-size: 20px;"
-          ><i class="fab fa-instagram"></i
-        ></a>
-        <a
-          href="https://www.youtube.com/@lodhasamajindore2762"
-          target="_blank"
-          title="YouTube"
-          class="socials-item"
-          style="margin: 0 5px; color: #fff; font-size: 20px;"
-          ><i class="fab fa-youtube"></i
-        ></a>
-        <a
-          href="https://web.whatsapp.com/send?phone=919826324370"
-          target="_blank"
-          title="WhatsApp"
-          class="socials-item"
-          style="margin: 0 5px; color: #fff; font-size: 20px;"
-          ><i class="fab fa-whatsapp"></i
-        ></a>
+      <div class="footer-socials" style="display:flex; align-items:center;">
+        <a href="https://www.facebook.com/profile.php?id=61552495104262" target="_blank" title="Facebook" class="socials-item" style="margin:0 5px; color:#fff; font-size:20px;"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com/LodhaS11845" target="_blank" title="Twitter" class="socials-item" style="margin:0 5px; color:#fff; font-size:20px;"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.instagram.com/lodha.samaj/" target="_blank" title="Instagram" class="socials-item" style="margin:0 5px; color:#fff; font-size:20px;"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.youtube.com/@lodhasamajindore2762" target="_blank" title="YouTube" class="socials-item" style="margin:0 5px; color:#fff; font-size:20px;"><i class="fab fa-youtube"></i></a>
+        <a href="https://web.whatsapp.com/send?phone=919826324370" target="_blank" title="WhatsApp" class="socials-item" style="margin:0 5px; color:#fff; font-size:20px;"><i class="fab fa-whatsapp"></i></a>
       </div>
-
-      <div
-        class="footer-site-info"
-        style="
-          font-family: 'Noto Sans Devanagari', sans-serif;
-          font-size: 16px;
-          text-align: right;
-          display: flex;
-          align-items: center;
-          justify-content: flex-end;
-          gap: 8px;
-        "
-      >
+      <div class="footer-site-info" style="font-family:'Noto Sans Devanagari', sans-serif; font-size:16px; text-align:right; display:flex; align-items:center; justify-content:flex-end; gap:8px;">
         <span>Powered by</span>
         <a href="https://www.armourinfosec.com/" target="_blank">
-          <img
-            src="https://www.armourinfosec.io/wp-content/uploads/2021/05/armour-infosec.png"
-            alt="Armour Infosec"
-            style="height: 30px; width: auto"
-          />
+          <img src="https://www.armourinfosec.io/wp-content/uploads/2021/05/armour-infosec.png" alt="Armour Infosec" style="height:30px; width:auto;">
         </a>
       </div>
     </div>
@@ -1025,7 +912,7 @@
       }
     });
 
-    // Modal functionality remains the same
+    // Modal functionality
     let currentIndex = 0;
     let autoPlay = false;
     let autoPlayInterval;
