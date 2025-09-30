@@ -356,6 +356,31 @@
         height: 25px;
       }
     }
+  
+    .pagination {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+    .pagination button {
+      background: #c0392b;
+      color: #fff;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.3s;
+    }
+    .pagination button:hover {
+      background: #922b21;
+    }
+    .pagination button.active {
+      background: #e74c3c;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -401,15 +426,14 @@
     </section>
 
     <section class="donor-grid" role="list" aria-label="दानदाताओं की सूची">
-
     <div class="donor-card">
-  <div class="donor-photo">
-    <img src="images/sunil-kotul-thegem-person.png" alt="श्री सुनील जी कोतुल फोटो">
-  </div>
-  <h3>श्री सुनील जी कोतुल <br> (अध्यक्ष: लोधा समाज इंदौर)</h3>
-  <p><strong>दान:</strong> ₹6,100</p>
-  <p><strong>प्रकार:</strong> नगद</p>
-</div>
+      <div class="donor-photo">
+        <img src="images/sunil-kotul-thegem-person.png" alt="श्री सुनील जी कोतुल फोटो">
+      </div>
+      <h3>श्री सुनील जी कोतुल <br> (अध्यक्ष: लोधा समाज इंदौर)</h3>
+      <p><strong>दान:</strong> ₹6,100</p>
+      <p><strong>प्रकार:</strong> नगद</p>
+    </div>
 
 
 <div class="donor-card">
@@ -1241,7 +1265,7 @@
   <p><strong>प्रकार:</strong> आटा</p>
 </div>
 
-      
+
     </section>
 
     <div id="noResults" class="no-results" style="display:none;">कोई परिणाम नहीं मिला</div>
@@ -1267,6 +1291,9 @@
       </div>
     </div>
   </main>
+
+<div id="pagination" class="pagination"></div>
+
 
   <footer id="footer-nav" class="site-footer" style="background: linear-gradient(90deg, #000000, #c0392b); padding: 30px 0; color: #fff;" role="contentinfo">
     <div class="container" style="max-width:1200px; margin:0 auto; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center;">
@@ -1480,6 +1507,55 @@
         closeModal();
       }
     });
+
+    // Pagination Logic
+    const itemsPerPage = 20;
+    const donorCardsList = Array.from(document.querySelectorAll(".donor-card"));
+    const paginationContainer = document.getElementById("pagination");
+
+    let currentPage = 1;
+    let totalPages = Math.ceil(donorCardsList.length / itemsPerPage);
+
+    function showPage(page) {
+      currentPage = page;
+      donorCardsList.forEach((card, index) => {
+        card.style.display =
+          index >= (page - 1) * itemsPerPage && index < page * itemsPerPage
+            ? "block"
+            : "none";
+      });
+      renderPagination();
+    }
+
+    function renderPagination() {
+      paginationContainer.innerHTML = "";
+
+      // Prev Button
+      const prevBtn = document.createElement("button");
+      prevBtn.textContent = "« Prev";
+      prevBtn.disabled = currentPage === 1;
+      prevBtn.onclick = () => showPage(currentPage - 1);
+      paginationContainer.appendChild(prevBtn);
+
+      // Page Numbers
+      for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement("button");
+        btn.textContent = i;
+        if (i === currentPage) btn.classList.add("active");
+        btn.onclick = () => showPage(i);
+        paginationContainer.appendChild(btn);
+      }
+
+      // Next Button
+      const nextBtn = document.createElement("button");
+      nextBtn.textContent = "Next »";
+      nextBtn.disabled = currentPage === totalPages;
+      nextBtn.onclick = () => showPage(currentPage + 1);
+      paginationContainer.appendChild(nextBtn);
+    }
+
+    // पहली बार लोड पर
+    showPage(1);
 
   </script>
 </body>
