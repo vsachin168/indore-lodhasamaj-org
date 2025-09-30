@@ -39,10 +39,6 @@
       max-width: 900px;
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
     }
-    .announcement.visible {
-      opacity: 1;
-      transition: opacity 0.6s ease-in;
-    }
     .announcement h1 {
       color: #c0392b;
       font-size: 34px;
@@ -332,31 +328,7 @@
         padding: 6px 10px;
       }
     }
-    /* Desktop footer layout (default) */
-    #footer-nav .container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-    }
-    /* Mobile fix */
-    @media (max-width: 768px) {
-      #footer-nav .container {
-        flex-direction: column;
-        text-align: center;
-        gap: 15px;
-      }
-      #footer-nav .footer-left,
-      #footer-nav .footer-socials,
-      #footer-nav .footer-site-info {
-        text-align: center !important;
-        justify-content: center !important;
-      }
-      #footer-nav .footer-site-info img {
-        height: 25px;
-      }
-    }
-  
+    /* Pagination */
     .pagination {
       display: flex;
       justify-content: center;
@@ -426,7 +398,8 @@
     </section>
 
     <section class="donor-grid" role="list" aria-label="दानदाताओं की सूची">
-    <div class="donor-card">
+
+<div class="donor-card">
       <div class="donor-photo">
         <img src="images/sunil-kotul-thegem-person.png" alt="श्री सुनील जी कोतुल फोटो">
       </div>
@@ -1561,8 +1534,7 @@
     </div>
   </main>
 
-<div id="pagination" class="pagination"></div>
-
+  <div id="pagination" class="pagination"></div>
 
   <footer id="footer-nav" class="site-footer" style="background: linear-gradient(90deg, #000000, #c0392b); padding: 30px 0; color: #fff;" role="contentinfo">
     <div class="container" style="max-width:1200px; margin:0 auto; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center;">
@@ -1776,112 +1748,89 @@
         closeModal();
       }
     });
-
-    // Pagination Logic
-    const itemsPerPage = 20;
-    const donorCardsList = Array.from(document.querySelectorAll(".donor-card"));
-    const paginationContainer = document.getElementById("pagination");
-
-    let currentPage = 1;
-    let totalPages = Math.ceil(donorCardsList.length / itemsPerPage);
-
-    function showPage(page) {
-      currentPage = page;
-      donorCardsList.forEach((card, index) => {
-        card.style.display =
-          index >= (page - 1) * itemsPerPage && index < page * itemsPerPage
-            ? "block"
-            : "none";
-      });
-      renderPagination();
-    }
-
-    function renderPagination() {
-      paginationContainer.innerHTML = "";
-
-      // Prev Button
-      const prevBtn = document.createElement("button");
-      prevBtn.textContent = "« Prev";
-      prevBtn.disabled = currentPage === 1;
-      prevBtn.onclick = () => showPage(currentPage - 1);
-      paginationContainer.appendChild(prevBtn);
-
-      // Page Numbers
-      for (let i = 1; i <= totalPages; i++) {
-        const btn = document.createElement("button");
-        btn.textContent = i;
-        if (i === currentPage) btn.classList.add("active");
-        btn.onclick = () => showPage(i);
-        paginationContainer.appendChild(btn);
-      }
-
-      // Next Button
-      const nextBtn = document.createElement("button");
-      nextBtn.textContent = "Next »";
-      nextBtn.disabled = currentPage === totalPages;
-      nextBtn.onclick = () => showPage(currentPage + 1);
-      paginationContainer.appendChild(nextBtn);
-    }
-
-    // पहली बार लोड पर
-    showPage(1);
-
   </script>
+
   <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const itemsPerPage = 12; // एक पेज पर donor card की संख्या
-    const donorCards = Array.from(document.querySelectorAll(".donor-card"));
-    const paginationContainer = document.getElementById("pagination");
-    let currentPage = 1;
-  
-    // Step 1: img को lazy loading setup
-    donorCards.forEach(card => {
-      const img = card.querySelector("img");
-      if (img) {
-        img.dataset.src = img.src;  // original src को dataset में सेव करो
-        img.removeAttribute("src"); // src हटाओ ताकि तुरंत load ना हो
-      }
-    });
-  
-    function loadPage(page) {
-      currentPage = page;
-      const start = (page - 1) * itemsPerPage;
-      const end = start + itemsPerPage;
-  
-      donorCards.forEach((card, index) => {
-        if (index >= start && index < end) {
-          card.style.display = "block";
-  
-          // image src load करो (first time ही load होगा)
-          const img = card.querySelector("img");
-          if (img && !img.src && img.dataset.src) {
-            img.src = img.dataset.src;
-          }
-        } else {
-          card.style.display = "none";
+    // Pagination and optimized lazy loading
+    document.addEventListener("DOMContentLoaded", function () {
+      const itemsPerPage = 12; // number of donor cards per page
+      const donorCards = Array.from(document.querySelectorAll(".donor-card"));
+      const paginationContainer = document.getElementById("pagination");
+      let currentPage = 1;
+
+      // Setup lazy loading by moving src to data-src and removing actual src
+      donorCards.forEach(card => {
+        const img = card.querySelector("img");
+        if (img) {
+          img.loading = "lazy"; // browser native lazy loading hint
+          img.dataset.src = img.src;
+          img.removeAttribute("src");
         }
       });
-  
-      renderPagination();
-    }
-  
-    function renderPagination() {
-      const totalPages = Math.ceil(donorCards.length / itemsPerPage);
-      paginationContainer.innerHTML = "";
-  
-      for (let i = 1; i <= totalPages; i++) {
-        const btn = document.createElement("button");
-        btn.innerText = i;
-        btn.classList.toggle("active", i === currentPage);
-        btn.addEventListener("click", () => loadPage(i));
-        paginationContainer.appendChild(btn);
-      }
-    }
-  
-    // Load first page initially
-    loadPage(1);
-  });
-  </script>
 
+      // Load actual images for specified pages (current + next)
+      function loadImagesForPages(pages) {
+        pages.forEach(page => {
+          const start = (page - 1) * itemsPerPage;
+          const end = start + itemsPerPage;
+          for (let i = start; i < end && i < donorCards.length; i++) {
+            const card = donorCards[i];
+            const img = card.querySelector("img");
+            if (img && !img.src && img.dataset.src) {
+              img.src = img.dataset.src;
+            }
+          }
+        });
+      }
+
+      // Load and display donor cards for a page
+      function loadPage(page) {
+        currentPage = page;
+        const start = (page - 1) * itemsPerPage;
+        const end = start + itemsPerPage;
+
+        donorCards.forEach((card, index) => {
+          card.style.display = (index >= start && index < end) ? "block" : "none";
+        });
+
+        // Preload images for current and next page
+        loadImagesForPages([currentPage, currentPage + 1]);
+
+        renderPagination();
+      }
+
+      // Render pagination buttons
+      function renderPagination() {
+        const totalPages = Math.ceil(donorCards.length / itemsPerPage);
+        paginationContainer.innerHTML = "";
+
+        // Previous button
+        const prevBtn = document.createElement("button");
+        prevBtn.textContent = "« Prev";
+        prevBtn.disabled = currentPage === 1;
+        prevBtn.onclick = () => loadPage(currentPage - 1);
+        paginationContainer.appendChild(prevBtn);
+
+        // Page numbers buttons
+        for (let i = 1; i <= totalPages; i++) {
+          const btn = document.createElement("button");
+          btn.textContent = i;
+          btn.classList.toggle("active", i === currentPage);
+          btn.onclick = () => loadPage(i);
+          paginationContainer.appendChild(btn);
+        }
+
+        // Next button
+        const nextBtn = document.createElement("button");
+        nextBtn.textContent = "Next »";
+        nextBtn.disabled = currentPage === totalPages;
+        nextBtn.onclick = () => loadPage(currentPage + 1);
+        paginationContainer.appendChild(nextBtn);
+      }
+
+      // Initial load
+      loadPage(1);
+    });
+  </script>
 </body>
 </html>
