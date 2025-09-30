@@ -1558,5 +1558,61 @@
     showPage(1);
 
   </script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const itemsPerPage = 12; // एक पेज पर donor card की संख्या
+    const donorCards = Array.from(document.querySelectorAll(".donor-card"));
+    const paginationContainer = document.getElementById("pagination");
+    let currentPage = 1;
+  
+    // Step 1: img को lazy loading setup
+    donorCards.forEach(card => {
+      const img = card.querySelector("img");
+      if (img) {
+        img.dataset.src = img.src;  // original src को dataset में सेव करो
+        img.removeAttribute("src"); // src हटाओ ताकि तुरंत load ना हो
+      }
+    });
+  
+    function loadPage(page) {
+      currentPage = page;
+      const start = (page - 1) * itemsPerPage;
+      const end = start + itemsPerPage;
+  
+      donorCards.forEach((card, index) => {
+        if (index >= start && index < end) {
+          card.style.display = "block";
+  
+          // image src load करो (first time ही load होगा)
+          const img = card.querySelector("img");
+          if (img && !img.src && img.dataset.src) {
+            img.src = img.dataset.src;
+          }
+        } else {
+          card.style.display = "none";
+        }
+      });
+  
+      renderPagination();
+    }
+  
+    function renderPagination() {
+      const totalPages = Math.ceil(donorCards.length / itemsPerPage);
+      paginationContainer.innerHTML = "";
+  
+      for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement("button");
+        btn.innerText = i;
+        btn.classList.toggle("active", i === currentPage);
+        btn.addEventListener("click", () => loadPage(i));
+        paginationContainer.appendChild(btn);
+      }
+    }
+  
+    // Load first page initially
+    loadPage(1);
+  });
+  </script>
+
 </body>
 </html>
