@@ -77,41 +77,68 @@
     }
     /* Filters */
     .filters {
-      margin: 20px auto;
       display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
       justify-content: center;
       align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 20px auto;
     }
-    .filters input,
-    .filters select {
+
+    .filters input {
       padding: 10px 14px;
       font-size: 14px;
       border: 1.5px solid #e74c3c;
       border-radius: 8px;
       outline: none;
-      transition: all 0.3s ease;
-      min-width: 210px;
+      text-align: center;
+      min-width: 200px;
     }
-    .filters input:focus,
-    .filters select:focus {
-      border-color: #922b21;
-      box-shadow: 0 0 10px rgba(146, 43, 33, 0.5);
+
+    .filter-buttons,
+    .sort-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
     }
-    .filters input:hover,
-    .filters select:hover {
-      border-color: #c0392b;
+
+    .filter-buttons button,
+    .sort-buttons button {
+      padding: 8px 12px;
+      border: 1.5px solid #e74c3c;
+      border-radius: 8px;
+      background: #fff;
+      color: #c0392b;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.3s;
     }
-    @media (max-width: 410px) {
+
+    .filter-buttons button.active,
+    .sort-buttons button.active {
+      background: #c0392b;
+      color: #fff;
+    }
+
+    .filter-buttons button:hover,
+    .sort-buttons button:hover {
+      background: #e74c3c;
+      color: #fff;
+    }
+
+    /* Responsive for mobile */
+    @media (max-width: 600px) {
       .filters {
         flex-direction: column;
-        gap: 10px;
+        gap: 12px;
+        align-items: center;
       }
-      .filters input,
-      .filters select {
-        width: 80%;
-        font-size: 14px;
+      .filter-buttons,
+      .sort-buttons {
+        justify-content: center;
+      }
+      .filters input {
+        width: 90%;
         min-width: unset;
       }
     }
@@ -377,24 +404,25 @@
 
     <section class="filters" role="search" aria-label="दानदाता खोज और फ़िल्टर">
       <input type="search" id="searchName" placeholder="दानदाता खोजें..." aria-label="दानदाता खोजें" />
-      <select id="filterType" aria-label="दान प्रकार चुनें">
-        <option value="">दान प्रकार चुनें</option>
-        <option value="शक्कर">शक्कर</option>
-        <option value="आटा">आटा</option>
-        <option value="तेल">तेल</option>
-        <option value="नमक">नमक</option>
-        <option value="मावा">मावा</option>
-        <option value="बेसन">बेसन</option>
-        <option value="नगद">नगद</option>
-        <option value="घी">घी</option>
-        <option value="गैस">गैस</option>
-        <option value="अन्य">अन्य</option>
-      </select>
-      <select id="sortBy" aria-label="सॉर्ट बाय">
-        <option value="">सॉर्ट बाय</option>
-        <option value="name">नाम (अक्षरानुक्रम)</option>
-        <option value="type">दान प्रकार के अनुसार</option>
-      </select>
+
+      <div class="filter-buttons" role="group" aria-label="दान प्रकार चुनें">
+        <button data-type="">सभी दानदाता</button>
+        <button data-type="शक्कर">शक्कर</button>
+        <button data-type="आटा">आटा</button>
+        <button data-type="तेल">तेल</button>
+        <button data-type="नमक">नमक</button>
+        <button data-type="मावा">मावा</button>
+        <button data-type="बेसन">बेसन</button>
+        <button data-type="नगद">नगद</button>
+        <button data-type="घी">घी</button>
+        <button data-type="गैस">गैस</button>
+        <button data-type="अन्य">अन्य</button>
+      </div>
+
+      <div class="sort-buttons" role="group" aria-label="सॉर्ट बाय">
+        <button data-sort="name">नाम (अक्षरानुक्रम)</button>
+        <button data-sort="type">दान प्रकार के अनुसार</button>
+      </div>
     </section>
 
     <section class="donor-grid" role="list" aria-label="दानदाताओं की सूची">
@@ -1568,83 +1596,178 @@
     }
 
     const searchInput = document.getElementById("searchName");
-    const filterType = document.getElementById("filterType");
-    const sortBy = document.getElementById("sortBy");
+    const filterBtns = document.querySelectorAll(".filter-buttons button");
+    const sortBtns = document.querySelectorAll(".sort-buttons button");
     const donorGrid = document.querySelector(".donor-grid");
-    const donorCards = document.querySelectorAll(".donor-card");
+    const donorCards = Array.from(document.querySelectorAll(".donor-card"));
     const noResults = document.getElementById("noResults");
 
-    function filterDonors() {
-      const searchValue = searchInput.value.toLowerCase();
-      const typeValue = filterType.value.toLowerCase();
-      let visibleCount = 0;
+    const knownTypes = ["शक्कर","आटा","तेल","नमक","मावा","बेसन","नगद","घी","गैस"];
 
-      donorCards.forEach((card) => {
-        const name = card.querySelector("h3").textContent.toLowerCase();
-        const type = card
-          .querySelector("p:nth-of-type(2)")
-          .textContent.toLowerCase();
+    let activeType = "";   // e.g. "शक्कर" or "" for all
+    let activeSort = "";   // "name", "type" or "" for default
+    const originalOrder = donorCards.slice(); // preserve initial order
 
-        const matchName = name.includes(searchValue);
-        const matchType = typeValue === "" || type.includes(typeValue);
+    // extract numbers (supports commas like "6,100")
+    function extractNumbers(str) {
+      if (!str) return [];
+      const matches = str.match(/[\d,]+/g);
+      if (!matches) return [];
+      return matches.map(m => parseInt(m.replace(/,/g, ''), 10));
+    }
 
-        if (matchName && matchType) {
+    function sumAllNumbersInText(text) {
+      return extractNumbers(text).reduce((s, n) => s + (isNaN(n) ? 0 : n), 0);
+    }
+
+    // parse donation with awareness of filterType and cardTypeText
+    function parseDonation(text, filterType, cardTypeText) {
+      if (!text) return 0;
+      const parts = text.split(/[,+]/).map(p => p.trim()).filter(Boolean);
+      const lowerCardType = (cardTypeText || "").toLowerCase();
+
+      // No filter: sum everything
+      if (!filterType) {
+        return sumAllNumbersInText(text);
+      }
+
+      // "अन्य" filter: sum numbers from parts that do NOT mention any known type
+      if (filterType === "अन्य") {
+        let total = 0;
+        parts.forEach(part => {
+          const lowerPart = part.toLowerCase();
+          const hasKnown = knownTypes.some(t => lowerPart.includes(t));
+          if (!hasKnown) total += sumAllNumbersInText(part);
+        });
+        if (total > 0) return total;
+        // fallback: if cardType also doesn't include any known type, count all numbers
+        const cardHasKnown = knownTypes.some(t => lowerCardType.includes(t));
+        if (!cardHasKnown) return sumAllNumbersInText(text);
+        return 0;
+      }
+
+      // Specific filter (e.g. "शक्कर")
+      let total = 0;
+      parts.forEach(part => {
+        if (part.toLowerCase().includes(filterType.toLowerCase())) {
+          total += sumAllNumbersInText(part);
+        }
+      });
+      if (total > 0) return total;
+
+      // fallback: if the card's "प्रकार" contains the filter type but donation text is unlabeled,
+      // then sum all numbers (handles cases like "₹6,100" where type is 'नगद' but label absent in text)
+      if (lowerCardType.includes(filterType.toLowerCase())) {
+        return sumAllNumbersInText(text);
+      }
+
+      return 0;
+    }
+
+    function debounceFilter(func, wait = 200) {
+      let timeout;
+      return (...args) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), wait);
+      };
+    }
+
+    function filterAndSort() {
+      const searchValue = (searchInput.value || "").toLowerCase();
+
+      // update visibility and calculate amounts
+      donorCards.forEach(card => {
+        const name = (card.querySelector("h3")?.textContent || "").toLowerCase();
+        const typeText = (card.querySelector("p:nth-of-type(2)")?.textContent || "");
+        const donationText = (card.querySelector("p:nth-of-type(1)")?.textContent || "");
+
+        const matchSearch = name.includes(searchValue);
+        let matchType = true;
+
+        if (activeType) {
+          if (activeType === "अन्य") {
+            const lower = typeText.toLowerCase();
+            matchType = !knownTypes.some(t => lower.includes(t));
+          } else {
+            matchType = typeText.toLowerCase().includes(activeType.toLowerCase());
+          }
+        }
+
+        if (matchSearch && matchType) {
           card.style.display = "block";
-          visibleCount++;
+          const amt = parseDonation(donationText, activeType, typeText);
+          card._amount = Number.isFinite(amt) ? amt : Number(amt) || 0;
+          card.dataset.amount = card._amount;
         } else {
           card.style.display = "none";
+          card._amount = 0;
+          card.dataset.amount = 0;
         }
       });
 
-      noResults.style.display = visibleCount === 0 ? "block" : "none";
-    }
+      // collect visible cards
+      let visibleCards = donorCards.filter(c => c.style.display !== "none");
 
-    function sortDonorCards(criteria) {
-      let cardsArray = Array.from(donorGrid.children);
-
-      cardsArray.sort((a, b) => {
-        if (criteria === "name") {
-          let nameA = a.querySelector("h3").textContent.trim();
-          let nameB = b.querySelector("h3").textContent.trim();
-          return nameA.localeCompare(nameB, "hi");
-        } else if (criteria === "type") {
-          let typeA = a
-            .querySelector("p:nth-of-type(2)")
-            .textContent.replace("प्रकार:", "")
-            .trim();
-          let typeB = b
-            .querySelector("p:nth-of-type(2)")
-            .textContent.replace("प्रकार:", "")
-            .trim();
-          return typeA.localeCompare(typeB, "hi");
+      // If neither filter nor sort is active, keep the original HTML order
+      if (!activeType && !activeSort) {
+        const ordered = originalOrder.filter(c => c.style.display !== "none");
+        ordered.forEach(c => donorGrid.appendChild(c));
+      } else {
+        // Otherwise sort accordingly
+        if (activeSort === "name") {
+          visibleCards.sort((a, b) =>
+            a.querySelector("h3").textContent.localeCompare(b.querySelector("h3").textContent, "hi")
+          );
+        } else if (activeSort === "type") {
+          visibleCards.sort((a, b) =>
+            a.querySelector("p:nth-of-type(2)").textContent.localeCompare(b.querySelector("p:nth-of-type(2)").textContent, "hi")
+          );
+        } else {
+          // default sort for filtered view = numeric amount desc
+          visibleCards.sort((a, b) => (b._amount || 0) - (a._amount || 0));
         }
-        return 0;
-      });
+        visibleCards.forEach(c => donorGrid.appendChild(c));
+      }
 
-      cardsArray.forEach((card) => donorGrid.appendChild(card));
+      noResults.style.display = visibleCards.length === 0 ? "block" : "none";
     }
 
-    searchInput.addEventListener("keyup", debounce(() => {
-      filterDonors();
-      if (sortBy.value) {
-        sortDonorCards(sortBy.value);
-      }
-    }, 300));
+    const debouncedFilterAndSort = debounceFilter(filterAndSort, 150);
+    searchInput.addEventListener("input", debouncedFilterAndSort);
 
-    filterType.addEventListener("change", () => {
-      filterDonors();
-      if (sortBy.value) {
-        sortDonorCards(sortBy.value);
-      }
+    // Filter buttons (click to set filter; clicking same button again toggles it off)
+    filterBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const type = btn.dataset.type;
+        if (activeType === type) {
+          activeType = "";
+          btn.classList.remove("active");
+        } else {
+          activeType = type;
+          filterBtns.forEach(b => b.classList.toggle("active", b === btn));
+        }
+        filterAndSort();
+      });
     });
 
-    sortBy.addEventListener("change", () => {
-      const criteria = sortBy.value;
-      if (criteria) {
-        sortDonorCards(criteria);
-      }
+    // Sort buttons (toggle on/off)
+    sortBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const s = btn.dataset.sort;
+        if (activeSort === s) {
+          activeSort = "";
+          btn.classList.remove("active");
+        } else {
+          activeSort = s;
+          sortBtns.forEach(b => b.classList.toggle("active", b === btn));
+        }
+        filterAndSort();
+      });
     });
 
+    // initial run
+    filterAndSort();
+    
     // Modal functionality with keyboard accessibility and aria attributes
     let currentIndex = 0;
     let autoPlay = false;
