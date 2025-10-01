@@ -1757,17 +1757,7 @@
       const donorCards = Array.from(document.querySelectorAll(".donor-card"));
       const paginationContainer = document.getElementById("pagination");
       let currentPage = 1;
-
-      // Setup lazy loading by moving src to data-src and removing actual src
-      donorCards.forEach(card => {
-        const img = card.querySelector("img");
-        if (img) {
-          img.loading = "lazy"; // browser native lazy loading hint
-          img.dataset.src = img.src;
-          img.removeAttribute("src");
-        }
-      });
-
+      
       // Load actual images for specified pages (current + next)
       function loadImagesForPages(pages) {
         pages.forEach(page => {
